@@ -1,0 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minirt.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/05 20:32:16 by mitsato           #+#    #+#             */
+/*   Updated: 2026/03/05 20:36:11 by mitsato          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef MINIRT_H
+# define MINIRT_H
+
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+
+/*					DEBUG					*/
+
+#define RED   "\033[31m"
+#define RESET "\033[0m"
+
+#define PERROR printf(RED "ERROR" RESET "\n");
+
+/*											*/
+
+
+#endif
