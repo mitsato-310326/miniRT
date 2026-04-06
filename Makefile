@@ -6,7 +6,7 @@
 #    By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/17 12:44:36 by ainatsug          #+#    #+#              #
-#    Updated: 2026/04/06 19:46:16 by mitsato          ###   ########.fr        #
+#    Updated: 2026/04/06 20:04:57 by mitsato          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,13 +43,13 @@ all: $(NAME)
 $(NAME): $(MLX_LIB) $(OBJ) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT_FLAGS) $(MLX_FLAGS) -o $(NAME)
 
-$(MLX_DIR): $(MLX_LIB)
-	@if [ ! -d "mlx" ]; then \
-	git clone https://github.com/42Paris/minilibx-linux.git mlx; \
-	fi
-
 $(MLX_LIB):
-	@make -C $(MLX_DIR)
+	@if [ ! -d "$(MLX_DIR)" ]; then \
+		echo "Cloning MinilibX..."; \
+		git clone https://github.com/42Paris/minilibx-linux.git $(MLX_DIR); \
+	fi
+	@echo "Building MinilibX..."
+	@$(MAKE) -C $(MLX_DIR)
 
 $(OBJ_DIR)/%.o: mandatory/src/%.c
 	@mkdir -p $(dir $@)
