@@ -6,47 +6,69 @@
 #    By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/17 12:44:36 by ainatsug          #+#    #+#              #
-#    Updated: 2026/03/05 20:48:15 by mitsato          ###   ########.fr        #
+#    Updated: 2026/03/26 21:56:31 by mitsato          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= miniRT
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -pthread
+CFLAGS		= -Wall -Wextra -Werror
 
-INCLUDE     = -I ./mandatory/includes
+LIBFT_DIR   = ./libft
+LIBFT		= ${LIBFT_DIR}/libft.a
+LIBFT_FLAGS = -L${LIBFT_DIR} -lft
+
+INCLUDE     = -I ./mandatory/includes -I ${LIBFT_DIR}
+
+SRC_DIR		= mandatory/src
 
 OBJ_DIR		= obj
 
 SRC 		= \
-			mandatory/src/main.c
+			${SRC_DIR}/main.c \
+			${SRC_DIR}/init.c
 
-OBJ 		= $(SRC:mandatory/src/%.c=$(OBJ_DIR)/%.o)
-MLX_LIB = mlx/
+PRINT_DIR	= printer
+SRC 		+= \
+			${SRC_DIR}/${PRINT_DIR}/print.c
+
+OBJ 		= $(SRC:${SRC_DIR}/%.c=$(OBJ_DIR)/%.o)
+MLX_DIR = mlx/
+MLX_LIB = mlx/mlx.a
 MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
 
 .PHONY: all
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(LIBFT) $(MLX_LIB)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT_FLAGS) $(MLX_FLAGS) -o $(NAME)
+
+$(MLX_DIR): $(MLX_LIB)
 	@if [ ! -d "mlx" ]; then \
 	git clone https://github.com/42Paris/minilibx-linux.git mlx; \
 	fi
-	@make -C $(MLX_LIB)
-	$(CC) $(CFLAGS) ${INCLUDE} $(OBJ) $(MLX_FLAGS) -o $(NAME)
+
+$(MLX_LIB):
+	@make -C $(MLX_DIR)
 
 $(OBJ_DIR)/%.o: mandatory/src/%.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) ${INCLUDE} -c $< -o $@
 
+$(LIBFT):
+	@-$(MAKE) -C $(LIBFT_DIR)
+
 .PHONY: clean
 clean:
 	@rm -rf $(OBJ_DIR)
-	@-$(MAKE) -C $(MLX_LIB) clean
+	@-$(MAKE) -C $(MLX_DIR) clean
+	@-$(MAKE) -C $(LIBFT_DIR) clean
 
 .PHONY: fclean
 fclean: clean
 	@rm -f $(NAME)
+	@-$(MAKE) -C $(MLX_DIR) fclean
+	@-$(MAKE) -C $(LIBFT_DIR) fclean
 
 .PHONY: re
 re: fclean all
