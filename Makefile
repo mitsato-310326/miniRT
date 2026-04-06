@@ -6,7 +6,7 @@
 #    By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/17 12:44:36 by ainatsug          #+#    #+#              #
-#    Updated: 2026/03/26 21:56:31 by mitsato          ###   ########.fr        #
+#    Updated: 2026/04/06 19:46:16 by mitsato          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
 .PHONY: all
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT) $(MLX_LIB)
+$(NAME): $(MLX_LIB) $(OBJ) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT_FLAGS) $(MLX_FLAGS) -o $(NAME)
 
 $(MLX_DIR): $(MLX_LIB)
