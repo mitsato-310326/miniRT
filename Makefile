@@ -34,8 +34,8 @@ SRC 		+= \
 
 OBJ 		= $(SRC:${SRC_DIR}/%.c=$(OBJ_DIR)/%.o)
 MLX_DIR = mlx/
-MLX_LIB = mlx/mlx.a
-MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
+MLX_LIB = mlx/libmlx.a
+MLX_FLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 .PHONY: all
 all: $(NAME)
@@ -45,8 +45,8 @@ $(NAME): $(MLX_LIB) $(OBJ) $(LIBFT)
 
 $(MLX_LIB):
 	@if [ ! -d "$(MLX_DIR)" ]; then \
-		echo "Cloning MinilibX..."; \
-		git clone https://github.com/42Paris/minilibx-linux.git $(MLX_DIR); \
+		echo "Cloning MinilibX (OpenGL)..."; \
+		git clone https://github.com/mario8705/minilibx.git $(MLX_DIR); \
 	fi
 	@echo "Building MinilibX..."
 	@$(MAKE) -C $(MLX_DIR)
