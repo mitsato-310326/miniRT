@@ -1,52 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   hook.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/05 20:32:16 by mitsato           #+#    #+#             */
-/*   Updated: 2026/04/11 14:30:23 by mitsato          ###   ########.fr       */
+/*   Created: 2026/03/26 21:51:59 by mitsato           #+#    #+#             */
+/*   Updated: 2026/04/11 15:08:10 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef HOOK_H
+# define HOOK_H
 
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdbool.h>
-#include "../../mlx/mlx.h"
-#include "../../libft/libft.h"
-#include "./printer.h"
-#include "./hook.h"
-
-#define WIDTH 320
-#define HEIGHT 320
+typedef struct s_mlxs	t_mlxs;
 
 /*											*/
 
-typedef struct s_mlxs
-{
-	char *mlx;
-	char *win;
-	char *img;
-	char *data;
-}						t_mlxs;
-
-t_mlxs *init();
+int stop_minirt(void *v_mlxs);
+int	key_handler(int keycode, void *v_mlxs);
 
 /*											*/
 
 
 /*					DEBUG					*/
-
-#define RED   "\033[31m"
-#define RESET "\033[0m"
-
-#define PERROR printf(RED "ERROR" RESET "\n");
-
 /*											*/
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 21:18:49 by mitsato           #+#    #+#             */
-/*   Updated: 2026/03/26 22:02:45 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/04/11 14:43:58 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void return_with_string(char *errstr, bool systemerr)
 		perror(NULL);
 	else
 		ft_putstr_fd(errstr, 2);
+	exit(1);
 }
 
 void free_mlxs(t_mlxs *mlxs)

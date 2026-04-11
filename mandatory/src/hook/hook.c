@@ -1,48 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 20:26:10 by mitsato           #+#    #+#             */
-/*   Updated: 2026/04/11 15:10:58 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/04/11 15:07:14 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int destroy_minirt(t_mlxs *mlxs)
+int stop_minirt(void *v_mlxs)
 {
-	if (mlxs && mlxs->img)
-		mlx_destroy_image(mlxs->mlx, mlxs->img);
-	if (mlxs && mlxs->win)
-		mlx_destroy_window(mlxs->mlx, mlxs->win);
-	if (mlxs)
-	{
-		mlx_destroy_display(mlxs->mlx);
-		free(mlxs->mlx);
-		free(mlxs);
-	}
-	return(0);
+	mlx_loop_end(((t_mlxs *)v_mlxs)->mlx);
+	return (0);
 }
 
-int	main(void)
+int	key_handler(int keycode, void *v_mlxs)
 {
-	t_mlxs	*mlxs;
-
-	// PERROR
-	mlxs = init();
-	mlx_hook(mlxs->win, 17, 0, stop_minirt, mlxs);
-	mlx_key_hook(mlxs->win, key_handler, mlxs);
-
-	for (int n = 0; n <= 1000; n++)
-	{
-		mlxs->data[n] = (char)255;
-	}
-
-	print(mlxs);
-	mlx_loop(mlxs->mlx);
-	destroy_minirt(mlxs);
+	if (keycode == 0xFF1B)
+		mlx_loop_end(((t_mlxs *)v_mlxs)->mlx);
 	return (0);
 }
