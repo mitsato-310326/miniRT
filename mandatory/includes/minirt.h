@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 20:32:16 by mitsato           #+#    #+#             */
-/*   Updated: 2026/04/11 14:30:23 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/04/12 14:09:45 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MINIRT_H
 
 #include <string.h>
+#include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
@@ -21,9 +22,10 @@
 #include "../../libft/libft.h"
 #include "./printer.h"
 #include "./hook.h"
+#include "./vec_util.h"
 
-#define WIDTH 320
-#define HEIGHT 320
+#define WIDTH 256
+#define HEIGHT 256
 
 /*											*/
 

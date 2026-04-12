@@ -1,30 +1,42 @@
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printer.h                                          :+:      :+:    :+:   */
+/*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 21:51:59 by mitsato           #+#    #+#             */
-/*   Updated: 2026/04/12 12:11:31 by mitsato          ###   ########.fr       */
+/*   Created: 2026/03/05 20:32:16 by mitsato           #+#    #+#             */
+/*   Updated: 2026/04/12 13:34:50 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTER_H
-# define PRINTER_H
+#ifndef VEC_UTIL_H
+# define VEC_UTIL_H
 
-typedef struct s_mlxs	t_mlxs;
-
-/*											*/
-
-bool print(t_mlxs * mlxs);
-
-void	my_pixel_put(char *data, int x, int y, int color);
+# include <math.h>
 
 /*											*/
 
+typedef struct s_vec_three
+{
+	double	x;
+	double	y;
+	double	z;
+}			t_vec_three;
+
+/*					UTILS					*/
+
+t_vec_three	vec_three_add(t_vec_three a, t_vec_three b);
+t_vec_three	vec_three_neg(t_vec_three a, t_vec_three b);
+t_vec_three	vec_three_mult(t_vec_three a, double t);
+double		vec_three_squared(t_vec_three a);
+
+double		dot(t_vec_three a, t_vec_three b);
+t_vec_three unit_vector(t_vec_three v);
 
 /*					DEBUG					*/
+
 /*											*/
 
 #endif

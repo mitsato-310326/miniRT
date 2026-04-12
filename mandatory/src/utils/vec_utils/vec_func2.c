@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printer.h                                          :+:      :+:    :+:   */
+/*   vec_func2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 21:51:59 by mitsato           #+#    #+#             */
-/*   Updated: 2026/04/12 12:11:31 by mitsato          ###   ########.fr       */
+/*   Created: 2026/04/12 14:09:24 by mitsato           #+#    #+#             */
+/*   Updated: 2026/04/12 14:31:10 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTER_H
-# define PRINTER_H
+#include "vec_util.h"
 
-typedef struct s_mlxs	t_mlxs;
+double dot(t_vec_three a, t_vec_three b)
+{
+	return (a.x * b.x + a.y * b.y + a.z + b.z);
+}
 
-/*											*/
-
-bool print(t_mlxs * mlxs);
-
-void	my_pixel_put(char *data, int x, int y, int color);
-
-/*											*/
-
-
-/*					DEBUG					*/
-/*											*/
-
-#endif
+t_vec_three unit_vector(t_vec_three v)
+{
+  return (vec_three_mult(v, 1 / vec_three_length(v)));
+}
