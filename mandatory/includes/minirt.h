@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 20:32:16 by mitsato           #+#    #+#             */
-/*   Updated: 2026/04/12 14:09:45 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/04/12 15:08:54 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 #include "./hook.h"
 #include "./vec_util.h"
 
-#define WIDTH 256
-#define HEIGHT 256
+#define WIDTH 320
+#define HEIGHT 180
 
 /*											*/
 

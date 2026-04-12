@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 20:26:10 by mitsato           #+#    #+#             */
-/*   Updated: 2026/04/12 13:02:00 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/04/12 15:09:14 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int destroy_minirt(t_mlxs *mlxs)
 
 void set_colorset(char *data)
 {
-	const int image_width = 256;
-	const int image_height = 256;
+	const int image_width = 320;
+	const int image_height = 180;
 
 	// printf("P3\n%d %d\n255\n", image_width, image_height);
 
