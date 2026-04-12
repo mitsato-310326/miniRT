@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_util.h                                         :+:      :+:    :+:   */
+/*   ray_util.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/05 20:32:16 by mitsato           #+#    #+#             */
-/*   Updated: 2026/04/12 14:53:16 by mitsato          ###   ########.fr       */
+/*   Created: 2026/04/12 14:52:59 by mitsato           #+#    #+#             */
+/*   Updated: 2026/04/12 15:01:21 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VEC_UTIL_H
-# define VEC_UTIL_H
+#ifndef RAY_UTIL_H
+# define RAY_UTIL_H
 
-# include <math.h>
+# include "vec_util.h"
+
+typedef struct s_vec_three t_vec_three;
 
 /*											*/
 
-typedef struct s_vec_three
+typedef struct s_ray
 {
-	double	x;
-	double	y;
-	double	z;
-}			t_vec_three;
+	t_vec_three p_origin;
+	t_vec_three v_dir;
+}			t_ray;
 
 /*					UTILS					*/
 
-t_vec_three	vec_three_add(t_vec_three a, t_vec_three b);
-t_vec_three	vec_three_neg(t_vec_three a, t_vec_three b);
-t_vec_three	vec_three_mult(t_vec_three a, double t);
-double		vec_three_squared(t_vec_three a);
-
-double		dot(t_vec_three a, t_vec_three b);
-t_vec_three unit_vector(t_vec_three v);
+t_vec_three ray_at(t_ray ray, double t);
 
 /*					DEBUG					*/
 
