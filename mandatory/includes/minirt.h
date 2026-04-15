@@ -20,9 +20,14 @@
 #include <stdbool.h>
 #include "../../mlx/mlx.h"
 #include "../../libft/libft.h"
-#include "./printer.h"
 #include "./hook.h"
+#include "./printer.h"
+#include "./ray_util.h"
 #include "./vec_util.h"
+
+//debug includes
+#include "../../ft_mlx.h"
+#include "../../os_setting.h"
 
 #define WIDTH 320
 #define HEIGHT 180
@@ -38,6 +43,7 @@ typedef struct s_mlxs
 }						t_mlxs;
 
 t_mlxs *init();
+int destroy_minirt(t_mlxs *mlxs);
 
 /*											*/
 

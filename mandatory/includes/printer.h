@@ -25,6 +25,7 @@ void	my_pixel_put(char *data, int x, int y, int color);
 
 
 /*					DEBUG					*/
+
 /*											*/
 
 #endif

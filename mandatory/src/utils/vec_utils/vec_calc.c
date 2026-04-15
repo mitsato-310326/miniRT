@@ -42,6 +42,7 @@ t_vec_three vec_three_mult(t_vec_three a, double t)
 	ret.z = a.z * t;
 	return (ret);
 }
+
 double vec_three_squared(t_vec_three a)
 {
 	return (sqrt(a.x * a.x + a.y * a.y + a.z *a.z));

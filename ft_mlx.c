@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook.c                                             :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 20:26:10 by mitsato           #+#    #+#             */
-/*   Updated: 2026/04/11 15:07:14 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/04/12 15:09:14 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "mandatory/includes/minirt.h"
 
-int stop_minirt(void *v_mlxs)
+void ft_mlx_destroy_display(void *mlx)
 {
-	(void)v_mlxs;
-	ft_mlx_loop_end(((t_mlxs *)v_mlxs)->mlx);
-	return (0);
+    switch (OS)
+    {
+        case MAC_OS:
+            (void)mlx;
+            return;
+        case LINUX_OS:
+            // mlx_destroy_display(mlx);
+            return;
+    }
 }
 
-int	key_handler(int keycode, void *v_mlxs)
+void ft_mlx_loop_end(void *mlx)
 {
-	(void)v_mlxs;
-	(void)keycode;
-
-	if (keycode == 0xFF1B)
-		ft_mlx_loop_end(((t_mlxs *)v_mlxs)->mlx);
-	return (0);
+    switch (OS)
+    {
+        case MAC_OS:
+            (void)mlx;
+            return;
+        case LINUX_OS:
+            // mlx_loop_end(mlx);
+            return;
+    }
 }

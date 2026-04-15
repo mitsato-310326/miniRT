@@ -20,7 +20,7 @@ int destroy_minirt(t_mlxs *mlxs)
 		mlx_destroy_window(mlxs->mlx, mlxs->win);
 	if (mlxs)
 	{
-		mlx_destroy_display(mlxs->mlx);
+		ft_mlx_destroy_display(mlxs->mlx);
 		free(mlxs->mlx);
 		free(mlxs);
 	}
@@ -32,8 +32,6 @@ void set_colorset(char *data)
 	const int image_width = 320;
 	const int image_height = 180;
 
-	// printf("P3\n%d %d\n255\n", image_width, image_height);
-
 	for (int j = image_height-1; j >= 0; --j) {
 		for (int i = 0; i < image_width; ++i) {
 		double r = (double)(i) / (image_width-1);
@@ -44,7 +42,6 @@ void set_colorset(char *data)
 		int ig = (int)(255.999 * g);
 		int ib = (int)(255.999 * b);
 
-		// printf("%d %d %d\n", ir, ig, ib);
 		my_pixel_put(data, i, j, (ir * 256 * 256) + (ig * 256) + ib);
 		}
 	}

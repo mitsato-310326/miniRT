@@ -18,23 +18,10 @@ void return_with_string(char *errstr, bool systemerr)
 		perror(NULL);
 	else
 		ft_putstr_fd(errstr, 2);
-	exit(1);
-}
-
-void free_mlxs(t_mlxs *mlxs)
-{
-	if (mlxs->img)
-		mlx_destroy_image(mlxs->mlx, mlxs->img);
-	if (mlxs->win)
-		mlx_destroy_window(mlxs->mlx, mlxs->win);
-	if (mlxs->mlx)
-	{
-		mlx_destroy_display(mlxs->mlx);
-		free(mlxs->mlx);
-	}
 }
 
 #define INIT_MLX_ERR "error"
+#define TITLE "error"
 
 t_mlxs	*init(void)
 {
@@ -48,7 +35,7 @@ t_mlxs	*init(void)
 		tmp->mlx = mlx_init();
 		if (tmp->mlx == NULL)
 			break;
-		tmp->win = mlx_new_window(tmp->mlx, WIDTH, HEIGHT, NULL);
+		tmp->win = mlx_new_window(tmp->mlx, WIDTH, HEIGHT, TITLE);
 		if (tmp->win == NULL)
 			break;
 		tmp->img = mlx_new_image(tmp->mlx, WIDTH, HEIGHT);
@@ -59,7 +46,7 @@ t_mlxs	*init(void)
 			break;
 		return tmp;
 	}
-	free_mlxs(tmp);
+	destroy_minirt(tmp);
 	return_with_string(INIT_MLX_ERR, 0);
 	return NULL;
 }
