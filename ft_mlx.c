@@ -20,7 +20,7 @@ void ft_mlx_destroy_display(void *mlx)
             (void)mlx;
             return;
         case LINUX_OS:
-            // mlx_destroy_display(mlx);
+            mlx_destroy_display(mlx);
             return;
     }
 }
@@ -33,7 +33,7 @@ void ft_mlx_loop_end(void *mlx)
             (void)mlx;
             return;
         case LINUX_OS:
-            // mlx_loop_end(mlx);
+            mlx_loop_end(mlx);
             return;
     }
 }
