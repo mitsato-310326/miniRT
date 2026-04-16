@@ -47,19 +47,19 @@ void set_colorset(char *data)
 	}
 }
 
-int	main(void)
-{
-	t_mlxs	*mlxs;
+// int	main(void)
+// {
+// 	t_mlxs	*mlxs;
 
-	// PERROR
-	mlxs = init();
-	mlx_hook(mlxs->win, 17, 0, stop_minirt, mlxs);
-	mlx_key_hook(mlxs->win, key_handler, mlxs);
+// 	// PERROR
+// 	mlxs = init();
+// 	mlx_hook(mlxs->win, 17, 0, stop_minirt, mlxs);
+// 	mlx_key_hook(mlxs->win, key_handler, mlxs);
 
-	set_colorset(mlxs->data);
+// 	set_colorset(mlxs->data);
 
-	print(mlxs);
-	mlx_loop(mlxs->mlx);
-	destroy_minirt(mlxs);
-	return (0);
-}
+// 	print(mlxs);
+// 	mlx_loop(mlxs->mlx);
+// 	destroy_minirt(mlxs);
+// 	return (0);
+// }
