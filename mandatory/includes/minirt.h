@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 20:32:16 by mitsato           #+#    #+#             */
-/*   Updated: 2026/04/12 15:08:54 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/04/16 21:15:06 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@
 //debug includes
 #include "../../ft_mlx.h"
 #include "../../os_setting.h"
+#include "./pattern.h"
 
-#define WIDTH 320
-#define HEIGHT 180
+#define WIDTH 320 * 2
+#define HEIGHT 180 * 2
 
 /*											*/
 

@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   os_setting.h                                       :+:      :+:    :+:   */
+/*   pattern.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 21:51:59 by mitsato           #+#    #+#             */
-/*   Updated: 2026/04/16 19:05:51 by mitsato          ###   ########.fr       */
+/*   Created: 2026/04/16 19:18:54 by mitsato           #+#    #+#             */
+/*   Updated: 2026/04/16 21:12:43 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OS_SETTING_H
-# define OS_SETTING_H
+#ifndef PATTERN_H
+# define PATTERN_H
 
-typedef enum e_os
-{
-	LINUX_OS = 0,
-	MAC_OS,
-}			t_os;
+/*											*/
 
-#define OS LINUX_OS
+typedef struct s_vec_three t_vec_three;
+
+/*					UTILS					*/
+
+int sky(char *data);
+t_vec_three ray_color(const t_ray* r);
+
+/*					DEBUG					*/
+
+/*											*/
 
 #endif
