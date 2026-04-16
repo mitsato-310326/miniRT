@@ -2,3 +2,4 @@ mlx/
 miniRT
 Makefile
 mlx_macos_guide.md
+os_setting.h
