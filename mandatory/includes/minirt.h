@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 20:32:16 by mitsato           #+#    #+#             */
-/*   Updated: 2026/04/16 21:15:06 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/04/18 21:13:43 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@
 #include "../../ft_mlx.h"
 #include "../../os_setting.h"
 #include "./pattern.h"
+#include "./hittable.h"
+#include "./hittable_list.h"
+#include "./sphere.h"
 
 #define WIDTH 320 * 2
 #define HEIGHT 180 * 2
