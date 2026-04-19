@@ -29,8 +29,8 @@ int destroy_minirt(t_mlxs *mlxs)
 
 void set_colorset(char *data)
 {
-	const int image_width = 320;
-	const int image_height = 180;
+	int image_width = 320;
+	int image_height = 180;
 
 	for (int j = image_height-1; j >= 0; --j) {
 		for (int i = 0; i < image_width; ++i) {

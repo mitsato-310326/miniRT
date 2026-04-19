@@ -20,7 +20,7 @@
 // public:
 //   sphere(point3 cen, double r) : center(cen), radius(r) {}
 
-bool hit( const t_ray* r, double tmin, double tmax, t_hit_record* rec , t_vec_three center, double radius);
+bool hit( t_ray* r, double tmin, double tmax, t_hit_record* rec , t_vec_three center, double radius);
 
 
 #endif

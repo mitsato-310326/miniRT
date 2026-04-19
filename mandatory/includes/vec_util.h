@@ -24,19 +24,19 @@ typedef struct s_vec_three
 	double	z;
 }			t_vec_three;
 
-typedef struct s_point3
-{
-	double	x;
-	double	y;
-	double	z;
-}			t_point3;
+// typedef struct s_point3
+// {
+// 	double	x;
+// 	double	y;
+// 	double	z;
+// }			t_point3;
 
-typedef struct s_color
-{
-	double	x;
-	double	y;
-	double	z;
-}			t_color;
+// typedef struct s_color
+// {
+// 	double	x;
+// 	double	y;
+// 	double	z;
+// }			t_color;
 
 /*					UTILS					*/
 

@@ -20,7 +20,7 @@ typedef struct s_vec_three t_vec_three;
 /*					UTILS					*/
 
 int sky(char *data);
-t_vec_three ray_color(const t_ray* r);
+t_vec_three ray_color(t_ray* r);
 
 /*					DEBUG					*/
 

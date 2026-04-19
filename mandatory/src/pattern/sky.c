@@ -33,9 +33,9 @@
 
 int sky(char *data)
 {
-    const double aspect_ratio = 16.0 / 9.0;
-    const int image_width = WIDTH;
-    const int image_height = (int)(image_width / aspect_ratio);
+    double aspect_ratio = 16.0 / 9.0;
+    int image_width = WIDTH;
+    int image_height = (int)(image_width / aspect_ratio);
 
     printf("P3\n%d %d\n255\n", image_width, image_height);
 

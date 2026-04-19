@@ -17,13 +17,14 @@
 
 typedef struct s_hittable_list
 {
-	void *next;
-	t_hit_record	*content;
+	struct s_hittable_list *next;
+	void	          *content;
 }			t_hittable_list;
 
   // add関数
   // clear関数
 
-bool list_hit(t_ray* r, double tmin, double tmax, t_hittable_list* rec);
+// bool list_hit(t_ray* r, double tmin, double tmax, t_hittable_list* rec);
+bool list_hit(t_ray* r, double t_min, double t_max, t_hit_record* rec, t_hittable_list* top);
 
 #endif

@@ -23,7 +23,7 @@ typedef struct s_hit_record {
 }				t_hit_record;
 
 
-//   inline void set_face_normal(const ray& r, const vec3& outward_normal) {
+//   inline void set_face_normal(ray& r, vec3& outward_normal) {
 //     front_face = dot(r.direction(), outward_normal) < 0;
 //     normal = front_face ? outward_normal :-outward_normal;
 //   }
@@ -31,7 +31,7 @@ typedef struct s_hit_record {
 // class hittable {
 // public:
 // virtual ~hittable() {}
-// bool hit( const ray& r, double t_min, double t_max, hit_record& rec );
+// bool hit( ray& r, double t_min, double t_max, hit_record& rec );
 
 #endif
 
@@ -49,7 +49,7 @@ typedef struct s_hit_record {
 //   sphere(point3 cen, double r) : center(cen), radius(r) {}
 
 //   virtual bool hit(
-//     const ray& r, double tmin, double tmax, hit_record& rec
+//     ray& r, double tmin, double tmax, hit_record& rec
 //   ) const;
 
 // public:
@@ -58,8 +58,8 @@ typedef struct s_hit_record {
 // };
 
 // bool sphere::hit(
-//   const ray& r, double t_min, double t_max, hit_record& rec
-// ) const {
+//   ray& r, double t_min, double t_max, hit_record& rec
+// ) {
 //   vec3 oc = r.origin() - center;
 //   auto a = r.direction().length_squared();
 //   auto half_b = dot(oc, r.direction());

@@ -13,17 +13,17 @@
 #include "minirt.h"
 
 //deb
-void print_vec_stat(const t_vec_three v, char *_string)
+void print_vec_stat(t_vec_three v, char *_string)
 {
 	printf("%s\t: (x, %lf), (y, %lf), (z, %lf)\n", _string, v.x, v.y, v.z);
 }
-void print_ray_stat(const t_ray* r)
+void print_ray_stat(t_ray* r)
 {
 	print_vec_stat(r->p_origin, "origin");
 	print_vec_stat(r->v_dir, "dir");
 }
 
-// bool hit_sphere(const t_vec_three *center, double radius, const t_ray *r)
+// bool hit_sphere(t_vec_three *center, double radius, t_ray *r)
 // {
 // 	t_vec_three oc = vec_three_neg(r->p_origin, *center);
 // 	// print_vec_stat(r->v_dir, "os");
@@ -35,7 +35,7 @@ void print_ray_stat(const t_ray* r)
 // 	return (discriminant > 0);
 // }
 
-// t_vec_three ray_color(const t_ray* r)
+// t_vec_three ray_color(t_ray* r)
 // {
 // 	t_vec_three point3;
 // 	point3.x = 0;

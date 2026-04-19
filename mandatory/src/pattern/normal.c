@@ -12,7 +12,7 @@
 
 #include "minirt.h"
 
-double hit_sphere(const t_vec_three *center, double radius, const t_ray *r)
+double hit_sphere(t_vec_three *center, double radius, t_ray *r)
 {
 	t_vec_three oc = vec_three_neg(r->p_origin, *center);
 	// print_vec_stat(r->v_dir, "os");
@@ -29,7 +29,7 @@ double hit_sphere(const t_vec_three *center, double radius, const t_ray *r)
 	return (discriminant > 0);
 }
 
-// double hit_sphere(const t_vec_three *center, double radius, const t_ray *r)
+// double hit_sphere(t_vec_three *center, double radius, t_ray *r)
 // {
 //   vec3 oc = r.origin() - center;
 //   auto a = dot(r.direction(), r.direction());
@@ -43,7 +43,7 @@ double hit_sphere(const t_vec_three *center, double radius, const t_ray *r)
 //   }
 // }
 
-t_vec_three ray_color(const t_ray* r)
+t_vec_three ray_color(t_ray* r)
 {
 	t_vec_three point3;
 	point3.x = 0;
@@ -77,7 +77,7 @@ t_vec_three ray_color(const t_ray* r)
 	return (vec_three_add(vec_three_mult(color1, 1.0-t), vec_three_mult(color2, t)));
 }
 
-// color ray_color(const ray& r) {
+// color ray_color(ray& r) {
 //   auto t = hit_sphere(point3(0,0,-1), 0.5, r);
 //   if (t > 0.0) {
 //     vec3 N = unit_vector(r.at(t) - vec3(0,0,-1));

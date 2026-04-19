@@ -14,24 +14,46 @@
 
 //返り値が関数 hit_operator
 
-bool list_hit(t_ray* r, double t_min, double t_max, t_hit_record* rec, t_hittable_list* list)
+typedef enum e_hittable_type
+{
+	SPHERE,
+	PLANE,
+	// ...
+}	t_hittable_type;
+
+typedef struct s_circle
+{
+	t_vec_three center;
+	t_hittable_type type;
+	double radius;
+}			t_circle;
+
+bool hit_operator(t_ray* r, double t_min, double t_max, t_hit_record *rec , void *hittable)
+{
+	if (((t_circle *)hittable)->type == SPHERE)// circleじゃなくていい
+		return hit(r, t_min, t_max, rec , ((t_circle *)hittable)->center, ((t_circle *)hittable)->radius);
+	return false;
+}
+
+bool list_hit(t_ray* r, double t_min, double t_max, t_hit_record* rec, t_hittable_list* top)
 {
   t_hit_record temp_rec;
   bool hit_anything = false;
-  auto closest_so_far = t_max;
+  double closest_so_far = t_max;
+  t_hittable_list *tmp = top;
 
-  while (list)
+  while (tmp)
   {
-    if (hit_operator(r, t_min, closest_so_far, &temp_rec, list->content)) // <-こいつの調整が必須（オブヘクトの種類によって変更）
+    if (hit_operator(r, t_min, closest_so_far, &temp_rec, tmp->content)) // <-こいつの調整が必須（オブヘクトの種類によって変更）
 	{
       hit_anything = true;
       closest_so_far = temp_rec.t;
       *rec = temp_rec;
     }
-	list = list->next;
+	tmp = tmp->next;
   }
 
-//   for (const auto& object : objects) {
+//   for (auto& object : objects) {
 //     if (object->hit(r, t_min, closest_so_far, temp_rec)) {
 //       hit_anything = true;
 //       closest_so_far = temp_rec.t;
@@ -42,7 +64,7 @@ bool list_hit(t_ray* r, double t_min, double t_max, t_hit_record* rec, t_hittabl
   return hit_anything;
 }
 
-t_hittable_list	*ft_lstnew(void *content)
+t_hittable_list	*ft_hlstnew(void *content)
 {
 	t_hittable_list	*new;
 
@@ -54,7 +76,7 @@ t_hittable_list	*ft_lstnew(void *content)
 	return (new);
 }
 
-void ft_lstadd_front(t_hittable_list **lst, t_hittable_list *new)
+void ft_hlstadd_front(t_hittable_list **lst, t_hittable_list *new)
 {
 	if (!lst || !*lst)
 	{
@@ -65,7 +87,7 @@ void ft_lstadd_front(t_hittable_list **lst, t_hittable_list *new)
 	*lst = new;
 }
 
-void ft_lstclear(t_hittable_list **lst)
+void ft_hlstclear(t_hittable_list **lst)
 {
 	t_hittable_list	*tmp;
 

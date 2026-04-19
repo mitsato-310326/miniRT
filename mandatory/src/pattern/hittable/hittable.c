@@ -21,7 +21,7 @@ void set_face_normal(t_ray * r, t_vec_three* outward_normal, t_hit_record *rec)
 		rec->normal = vec_three_mult(*outward_normal, -1);
 }
 
-bool hit(const t_ray* r, double t_min, double t_max, t_hit_record *rec , t_vec_three center, double radius)
+bool hit(t_ray* r, double t_min, double t_max, t_hit_record *rec , t_vec_three center, double radius)
 {
 	t_vec_three oc = vec_three_neg(r->p_origin, center);
 	double a = dot(r->v_dir, r->v_dir);
