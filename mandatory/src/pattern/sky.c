@@ -63,6 +63,19 @@ int sky(char *data)
     // t_vec_three lower_left_corner = origin - horizontal/2 - vertical/2 - focal_vec;xz
    t_vec_three lower_left_corner = vec_three_neg(vec_three_neg(vec_three_neg(origin, vec_three_mult(horizontal, 0.5)), vec_three_mult(vertical, 0.5)), vec_three_mult(focal_vec, 1.0));
 
+    t_hittable_list *world = NULL;
+    t_vec_three point3a;
+	point3a.x = 0;
+	point3a.y = 0;
+	point3a.z = -1;
+
+	t_vec_three point3b;
+	point3b.x = 0;
+	point3b.y = -100.5;
+	point3b.z = -1;
+    ft_hlstadd_front(&world, ft_hlstnew(&point3a));
+    ft_hlstadd_front(&world, ft_hlstnew(&point3b));
+
     for (int j = image_height-1; j >= 0; --j)
     {
         // perror("\rScanlines remaining: %d \n");
@@ -74,7 +87,7 @@ int sky(char *data)
             r.p_origin = origin;
             r.v_dir = vec_three_add(vec_three_add(lower_left_corner, vec_three_mult(horizontal, u)), vec_three_neg(vec_three_mult(vertical, v), origin));
             // r.v_dir = lower_left_corner + u*horizontal + v*vertical - origin;
-            t_vec_three pixel_color = ray_color(&r);
+            t_vec_three pixel_color = ray_color(&r, &world);
 
             int ir = (int)(255.999 * pixel_color.x);
             int ig = (int)(255.999 * pixel_color.y);

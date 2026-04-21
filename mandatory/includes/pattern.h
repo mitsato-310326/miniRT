@@ -16,11 +16,12 @@
 /*											*/
 
 typedef struct s_vec_three t_vec_three;
+typedef struct s_hittable_list t_hittable_list;
 
 /*					UTILS					*/
 
 int sky(char *data);
-t_vec_three ray_color(t_ray* r);
+t_vec_three ray_color(t_ray* r, t_hittable_list **world);
 
 /*					DEBUG					*/
 

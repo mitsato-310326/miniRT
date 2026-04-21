@@ -43,25 +43,29 @@ double hit_sphere(t_vec_three *center, double radius, t_ray *r)
 //   }
 // }
 
-t_vec_three ray_color(t_ray* r)
+t_vec_three ray_color(t_ray* r, t_hittable_list **world)
 {
-	t_vec_three point3;
-	point3.x = 0;
-	point3.y = 0;
-	point3.z = -1;
+	double t;
+	while (*world)
+	{
+		t = hit_sphere(&(((t_hit_record *)((*world)->content))->p), 100, r);
+		if (t > 0.0) {
+			// t_vec_three  N = unit_vector(r.at(t) - vec3(0,0,-1));
+			t_vec_three  N = unit_vector(vec_three_neg(ray_at(*r, t), ((t_hit_record *)((*world)->content))->p));
+			t_vec_three ret;
+			ret.x = N.x + 1;
+			ret.y = N.y + 1;
+			ret.z = N.z + 1;
+			return vec_three_mult(ret, 0.5);
+		}
+		t_vec_three unit_direction = unit_vector(r->v_dir);
 
-  double t = hit_sphere(&point3, 0.5, r);
-  if (t > 0.0) {
-    // t_vec_three  N = unit_vector(r.at(t) - vec3(0,0,-1));
-    t_vec_three  N = unit_vector(vec_three_neg(ray_at(*r, t), point3));
-    t_vec_three ret;
-    ret.x = N.x + 1;
-    ret.y = N.y + 1;
-    ret.z = N.z + 1;
-    return vec_three_mult(ret, 0.5);
-  }
-	t_vec_three unit_direction = unit_vector(r->v_dir);
+		
 
+		t = 0.5*(unit_direction.y + 1.0);
+		// return (1.0-t)*color(1.0, 1.0, 1.0) + t*color(0.5, 0.7, 1.0);
+		world = &((*world)->next);
+	}
 	t_vec_three color1;
 	color1.x = 1.0;
 	color1.y = 1.0;
@@ -71,9 +75,6 @@ t_vec_three ray_color(t_ray* r)
 	color2.x = 0.5;
 	color2.y = 0.7;
 	color2.z = 1.0;
-
-	t = 0.5*(unit_direction.y + 1.0);
-	// return (1.0-t)*color(1.0, 1.0, 1.0) + t*color(0.5, 0.7, 1.0);
 	return (vec_three_add(vec_three_mult(color1, 1.0-t), vec_three_mult(color2, t)));
 }
 

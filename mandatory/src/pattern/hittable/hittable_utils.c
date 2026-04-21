@@ -78,11 +78,11 @@ t_hittable_list	*ft_hlstnew(void *content)
 
 void ft_hlstadd_front(t_hittable_list **lst, t_hittable_list *new)
 {
-	if (!lst || !*lst)
-	{
-		PERROR
-		return ;
-	}
+	// if (!lst || !*lst)
+	// {
+	// 	PERROR
+	// 	return ;
+	// }
 	new->next = *lst;
 	*lst = new;
 }

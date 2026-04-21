@@ -26,5 +26,9 @@ typedef struct s_hittable_list
 
 // bool list_hit(t_ray* r, double tmin, double tmax, t_hittable_list* rec);
 bool list_hit(t_ray* r, double t_min, double t_max, t_hit_record* rec, t_hittable_list* top);
+t_hittable_list	*ft_hlstnew(void *content);
+void ft_hlstadd_front(t_hittable_list **lst, t_hittable_list *new);
+void ft_hlstclear(t_hittable_list **lst);
+
 
 #endif

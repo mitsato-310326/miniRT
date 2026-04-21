@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hittable.h                                         :+:      :+:    :+:   */
+/*   vec_util.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/18 18:58:40 by mitsato           #+#    #+#             */
-/*   Updated: 2026/04/18 19:34:06 by mitsato          ###   ########.fr       */
+/*   Created: 2026/03/05 20:32:16 by mitsato           #+#    #+#             */
+/*   Updated: 2026/04/18 18:50:08 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HITTABLE_H
-#define HITTABLE_H
+#ifndef VEC_UTIL_H
+# define VEC_UTIL_H
 
-# include "minirt.h"
+# include <math.h>
 
-// typedef struct s_myhit {
-//   t_vec_three p;
-//   t_vec_three normal;
-//   double t;
-//   bool front_face;
-// }				t_myhit;
 
-typedef struct s_hit_record {
-  t_vec_three p;
-  t_vec_three normal;
-  double t;
-  bool front_face;
-}				t_hit_record;
+
+/*					UTILS					*/
+
+double infinity = INFINITY;
+double pi = 3.1415926535897932385;
+
+double degrees_to_radians( double degrees ) { return degrees * pi / 180;}
+
+/*					DEBUG					*/
+
+/*											*/
 
 #endif
