@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_func.c                                         :+:      :+:    :+:   */
+/*   ft_weekend.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/12 14:52:22 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/03 20:32:53 by mitsato          ###   ########.fr       */
+/*   Created: 2026/05/03 19:14:14 by mitsato           #+#    #+#             */
+/*   Updated: 2026/05/03 20:03:41 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec_util.h"
-#include "ray_util.h"
+#ifndef FT_WEEKEND_H
+# define FT_WEEKEND_H
 
-t_ray	init_ray(t_vec_three origin, t_vec_three direction)//値渡し
-{
-	t_ray new;
+#include <math.h>
+#include <stdlib.h>
 
-	new.p_origin = origin;
-	new.v_dir = direction;
-	return new;
-}
+double	random_double(void);
+double	random_double_with(double min, double max);
+double	clamp(double x, double min, double max);
 
-t_vec_three ray_at(t_ray ray, double t)
-{
-	t_vec_three mult;
-	t_vec_three ret;
-
-	mult = vec_three_mult(ray.v_dir, t);
-	ret = vec_three_add(ray.p_origin, mult);
-	return (ret);
-}
+#endif

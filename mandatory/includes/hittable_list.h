@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 21:01:23 by mitsato           #+#    #+#             */
-/*   Updated: 2026/04/18 21:16:47 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/03 18:13:02 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #define HITTABLE_LIST_H
 
 #include "hittable.h"
+
+typedef struct s_hit_record t_hit_record;
 
 typedef struct s_hittable_list
 {

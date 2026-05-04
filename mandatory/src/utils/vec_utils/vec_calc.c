@@ -6,11 +6,22 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 14:09:24 by mitsato           #+#    #+#             */
-/*   Updated: 2026/04/16 19:31:47 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/03 19:58:26 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vec_util.h"
+
+t_vec_three init_vec_three(double x, double y, double z)
+{
+	t_vec_three new;
+
+	new.x = x;
+	new.y = y;
+	new.z = z;
+	return new;
+}
+
 
 t_vec_three vec_three_add(t_vec_three a, t_vec_three b)
 {

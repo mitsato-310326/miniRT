@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_func.c                                         :+:      :+:    :+:   */
+/*   ft_weekend.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/12 14:52:22 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/03 20:32:53 by mitsato          ###   ########.fr       */
+/*   Created: 2026/05/03 19:14:09 by mitsato           #+#    #+#             */
+/*   Updated: 2026/05/03 20:03:37 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec_util.h"
-#include "ray_util.h"
+#include "ft_weekend.h"
 
-t_ray	init_ray(t_vec_three origin, t_vec_three direction)//値渡し
+double	random_double(void)
 {
-	t_ray new;
-
-	new.p_origin = origin;
-	new.v_dir = direction;
-	return new;
+	return (rand() / (2147483647 + 1.0));
 }
 
-t_vec_three ray_at(t_ray ray, double t)
+double	random_double_with(double min, double max)
 {
-	t_vec_three mult;
-	t_vec_three ret;
+	return (min + (max - min) * random_double());
+}
 
-	mult = vec_three_mult(ray.v_dir, t);
-	ret = vec_three_add(ray.p_origin, mult);
-	return (ret);
+double clamp(double x, double min, double max)
+{
+  if (x < min) return min;
+  if (x > max) return max;
+  return x;
 }

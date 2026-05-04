@@ -6,94 +6,60 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 20:26:10 by mitsato           #+#    #+#             */
-/*   Updated: 2026/04/16 21:52:39 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/04 15:37:14 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-// t_vec_three ray_color(t_ray *r)
-// {
-//     t_vec_three unit_direction = unit_vector(r->v_dir);
-
-//     t_vec_three color1;
-//     color1.x = 1.0;
-//     color1.y = 1.0;
-//     color1.z = 1.0;
-
-//     t_vec_three color2;
-//     color2.x = 0.5;
-//     color2.y = 0.7;
-//     color2.z = 1.0;
-
-//     double t = 0.5*(unit_direction.y + 1.0);
-//     // return (1.0-t)*color(1.0, 1.0, 1.0) + t*color(0.5, 0.7, 1.0);
-//     return (vec_three_add(vec_three_mult(color1, 1.0-t), vec_three_mult(color2, t)));
-// }
 
 int sky(char *data)
 {
     double aspect_ratio = 16.0 / 9.0;
     int image_width = WIDTH;
     int image_height = (int)(image_width / aspect_ratio);
-
+    int samples_per_pixel = 100;
     printf("P3\n%d %d\n255\n", image_width, image_height);
-
-    double viewport_height = 2.0;
-    double viewport_width = aspect_ratio * viewport_height;
-    double focal_length = 1.0;
-
-    t_vec_three origin;// = vec_three_create(origin_x, origin_y, origin_z);
-    origin.x = 0;
-    origin.y = 0;
-    origin.z = 0;
-    t_vec_three horizontal;// = vec_three_create(horizontal_x, horizontal_y, horizontal_z);
-    horizontal.x = viewport_width;
-    horizontal.y = 0;
-    horizontal.z = 0;
-    t_vec_three vertical;// = vec_three_create(vertical_x, vertical_y, vertical_z);
-    vertical.x = 0;
-    vertical.y = viewport_height;
-    vertical.z = 0;
-
-    t_vec_three focal_vec;
-    focal_vec.x = 0;
-    focal_vec.y = 0;
-    focal_vec.z = focal_length;
-    // t_vec_three lower_left_corner = origin - horizontal/2 - vertical/2 - focal_vec;xz
-   t_vec_three lower_left_corner = vec_three_neg(vec_three_neg(vec_three_neg(origin, vec_three_mult(horizontal, 0.5)), vec_three_mult(vertical, 0.5)), vec_three_mult(focal_vec, 1.0));
+    t_camera cam = init_camera();
 
     t_hittable_list *world = NULL;
-    t_vec_three point3a;
-	point3a.x = 0;
-	point3a.y = 0;
-	point3a.z = -1;
+    t_sphere a;
+    t_vec_three point3a = init_vec_three(0, 0, -1);
+    a.origin = point3a;
+    a.radius = 0.5;
 
-	t_vec_three point3b;
-	point3b.x = 0;
-	point3b.y = -100.5;
-	point3b.z = -1;
-    ft_hlstadd_front(&world, ft_hlstnew(&point3a));
-    ft_hlstadd_front(&world, ft_hlstnew(&point3b));
+    t_sphere b;
+    t_vec_three point3b = init_vec_three(0, -100.5, -1);
+    b.origin = point3b;
+    b.radius = 100.0;
+
+    ft_hlstadd_front(&world, ft_hlstnew(&a));
+    ft_hlstadd_front(&world, ft_hlstnew(&b));
 
     for (int j = image_height-1; j >= 0; --j)
     {
-        // perror("\rScanlines remaining: %d \n");
         for (int i = 0; i < image_width; ++i)
         {
-            double u = (double)(i) / (image_width-1);
-            double v = (double)(j) / (image_height-1);
-            t_ray r;
-            r.p_origin = origin;
-            r.v_dir = vec_three_add(vec_three_add(lower_left_corner, vec_three_mult(horizontal, u)), vec_three_neg(vec_three_mult(vertical, v), origin));
-            // r.v_dir = lower_left_corner + u*horizontal + v*vertical - origin;
-            t_vec_three pixel_color = ray_color(&r, &world);
+            t_vec_three pixel_color = init_vec_three(0, 0, 0);
+            for (int s = 0; s < samples_per_pixel; ++s) {
+                double u = (i + random_double()) / (image_width-1);
+                double v = (j + random_double()) / (image_height-1);
+                t_ray r = get_ray(u, v, cam);
+                pixel_color = vec_three_add(pixel_color, ray_color(&r, &world));
+            }
+            double scale = 1.0 / samples_per_pixel;
+            double ir = pixel_color.x;
+            double ig = pixel_color.y;
+            double ib = pixel_color.z;
 
-            int ir = (int)(255.999 * pixel_color.x);
-            int ig = (int)(255.999 * pixel_color.y);
-            int ib = (int)(255.999 * pixel_color.z);
+            ir *= scale;
+            ig *= scale;
+            ib *= scale;
 
-		    my_pixel_put(data, i, j, (ir * 256 * 256) + (ig * 256) + ib);
+            int r = (256 * clamp(ir, 0.0, 0.999));
+            int g = (256 * clamp(ig, 0.0, 0.999));
+            int b = (256 * clamp(ib, 0.0, 0.999));
+
+		    my_pixel_put(data, i, j, (r * 256 * 256) + (g * 256) + b);
         }
     }
     perror("\nDone.\n");

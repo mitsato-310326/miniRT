@@ -6,53 +6,34 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 21:01:23 by mitsato           #+#    #+#             */
-/*   Updated: 2026/04/18 19:46:47 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/03 19:42:12 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HITTABLE_LIST_H
-#define HITTABLE_LIST_H
+#define CAMERA_H
 
-#include "hittable.h"
-
-#include <memory>
-#include <vector>
-
-using std::shared_ptr;
-using std::make_shared;
-
-class hittable_list: public hittable {
+class camera {
 public:
-  hittable_list() {}
-  hittable_list(shared_ptr<hittable> object) { add(object); }
+  camera() {
+    auto aspect_ratio = 16.0 / 9.0;
+    auto viewport_height = 2.0;
+    auto viewport_width = aspect_ratio * viewport_height;
+    auto focal_length = 1.0;
 
-  void clear() { objects.clear(); }
-  void add(shared_ptr<hittable> object) { objects.push_back(object); }
-
-  virtual bool hit(
-    ray& r, double tmin, double tmax, hit_record& rec
-  ) const;
-
-public:
-  std::vector<shared_ptr<hittable>> objects;
-};
-
-bool hittable_list::hit(
-  ray& r, double t_min, double t_max, hit_record& rec
-) {
-  hit_record temp_rec;
-  bool hit_anything = false;
-  auto closest_so_far = t_max;
-
-  for (auto& object : objects) {
-    if (object->hit(r, t_min, closest_so_far, temp_rec)) {
-      hit_anything = true;
-      closest_so_far = temp_rec.t;
-      rec = temp_rec;
-    }
+    origin = point3(0, 0, 0);
+    horizontal = vec3(viewport_width, 0.0, 0.0);
+    vertical = vec3(0.0, viewport_height, 0.0);
+    lower_left_corner = origin - horizontal/2 - vertical/2 - vec3(0, 0, focal_length);
   }
 
-  return hit_anything;
-}
+  ray get_ray(double u, double v) const {
+    return ray(origin, lower_left_corner + u*horizontal + v*vertical - origin);
+  }
 
+private:
+  point3 origin;
+  point3 lower_left_corner;
+  vec3 horizontal;
+  vec3 vertical;
+};
 #endif

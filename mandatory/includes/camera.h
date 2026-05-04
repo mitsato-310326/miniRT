@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_func.c                                         :+:      :+:    :+:   */
+/*   camera.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/12 14:52:22 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/03 20:32:53 by mitsato          ###   ########.fr       */
+/*   Created: 2026/03/05 20:32:16 by mitsato           #+#    #+#             */
+/*   Updated: 2026/05/03 19:54:46 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef CAMERA_H
+# define CAMERA_H
+
+#include "ft_weekend.h"
 #include "vec_util.h"
 #include "ray_util.h"
 
-t_ray	init_ray(t_vec_three origin, t_vec_three direction)//値渡し
+typedef struct s_vec_three t_vec_three;
+typedef struct s_ray t_ray;
+
+typedef struct s_camera
 {
-	t_ray new;
+	t_vec_three origin;
+    t_vec_three lower_left_corner;
+    t_vec_three horizontal;
+    t_vec_three vertical;
+}			t_camera;
 
-	new.p_origin = origin;
-	new.v_dir = direction;
-	return new;
-}
+t_camera init_camera();
+t_ray get_ray(double u, double v, t_camera camera);
 
-t_vec_three ray_at(t_ray ray, double t)
-{
-	t_vec_three mult;
-	t_vec_three ret;
-
-	mult = vec_three_mult(ray.v_dir, t);
-	ret = vec_three_add(ray.p_origin, mult);
-	return (ret);
-}
+#endif

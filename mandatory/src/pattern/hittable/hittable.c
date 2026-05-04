@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 19:05:31 by mitsato           #+#    #+#             */
-/*   Updated: 2026/04/18 21:26:38 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/04/26 18:42:32 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,3 +50,20 @@ bool hit(t_ray* r, double t_min, double t_max, t_hit_record *rec , t_vec_three c
   }
   return false;
 }
+
+// bool hit_all(t_ray *r, double t_min, double t_max, t_hit_record *rec)
+// {
+//   t_hit_record temp_rec;
+//   bool hit_anything = false;
+//   double closest_so_far = t_max;
+
+//   for (const auto& object : objects) {
+//     if (object->hit(*r, t_min, closest_so_far, temp_rec)) {
+//       hit_anything = true;
+//       closest_so_far = temp_rec.t;
+//       rec = temp_rec;
+//     }
+//   }
+
+//   return hit_anything;
+// }

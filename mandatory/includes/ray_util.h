@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 14:52:59 by mitsato           #+#    #+#             */
-/*   Updated: 2026/04/12 15:01:21 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/03 19:49:36 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_ray
 
 /*					UTILS					*/
 
+t_ray init_ray(t_vec_three origin, t_vec_three direction);
 t_vec_three ray_at(t_ray ray, double t);
 
 /*					DEBUG					*/
