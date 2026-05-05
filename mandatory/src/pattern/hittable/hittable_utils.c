@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 21:12:56 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/05 17:26:02 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/05 17:57:39 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,11 @@ bool hit_operator(t_ray* r, double t_min, double t_max, t_hit_record *rec , void
 
 bool list_hit(t_ray* r, double t_min, double t_max, t_hit_record* rec, t_hittable_list* top)
 {
-  t_hit_record temp_rec;
-  bool hit_anything = false;
-  double closest_so_far = t_max;
-  t_hittable_list *tmp = top;
+	ENTRY
+	t_hit_record temp_rec;
+	bool hit_anything = false;
+	double closest_so_far = t_max;
+	t_hittable_list *tmp = top;
 
 	while (tmp)
 	{

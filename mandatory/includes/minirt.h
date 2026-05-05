@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 20:32:16 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/03 20:17:10 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/05 17:57:01 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int destroy_minirt(t_mlxs *mlxs);
 #define RESET "\033[0m"
 
 #define PERROR printf(RED "ERROR" RESET "\n");
+#define ENTRY static int i ;if (i++ == 0) printf(RED "GET IN NEW FUNCTION" RESET "\n");
 
 /*											*/
 

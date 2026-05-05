@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 21:30:48 by mitsato           #+#    #+#             */
-/*   Updated: 2026/04/16 19:49:58 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/05 17:58:00 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	my_pixel_put(char *data, int x, int y, int color)
 
 bool print(t_mlxs *mlxs)
 {
+	ENTRY
+
 	mlx_string_put(mlxs->mlx, mlxs->win, 5, 0, 0xFF00FF, "Left Click:   Pan");
 	mlx_put_image_to_window(mlxs->mlx, mlxs->win, mlxs->img, 0, 0);
 
