@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 14:09:24 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/05 17:07:40 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/05 17:50:15 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,24 @@ double dot(t_vec_three a, t_vec_three b)
 
 t_vec_three unit_vector(t_vec_three v)
 {
-  return (vec_three_mult(v, (double)1 / vec_three_squared(v)));
+  return (vec_three_mult(v, 1.0 / vec_three_squared(v)));
 }
+
+#define PI 3.14159265
 
 t_vec_three random_in_unit_sphere()
 {
-	while (1) {
-		t_vec_three p = init_vec_three(random_double_with(-1, 1), random_double_with(-1, 1), random_double_with(-1, 1));
-		if (vec_three_squared(p) >= 1) continue;
-		return p;
-	}
+  double a = random_double_with(0, 2*PI);
+  double z = random_double_with(-1, 1);
+  double r = sqrt(1 - z*z);
+  return init_vec_three(r*cos(a), r*sin(a), z);
 }
 
+t_vec_three random_in_hemisphere(t_vec_three *normal)
+{
+	t_vec_three in_unit_sphere = random_in_unit_sphere();
+	if (dot(in_unit_sphere, *normal) > 0.0)
+		return in_unit_sphere;
+	else
+		return vec_three_mult(in_unit_sphere, -1);
+}

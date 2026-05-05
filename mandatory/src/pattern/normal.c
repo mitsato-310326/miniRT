@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 21:01:23 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/05 17:22:04 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/05 17:51:33 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ t_vec_three ray_color(t_ray* r, t_hittable_list *world, int depth)
 		return init_vec_three(0,0,0);
 	t_hit_record rec;
 
-	if (list_hit(r, 0, INFINITY, &rec, world))
+	if (list_hit(r, 0.001, INFINITY, &rec, world))
 	{
-		t_vec_three target = (vec_three_add(rec.p, rec.normal), random_in_unit_sphere());
+		t_vec_three target = vec_three_add(rec.p, random_in_hemisphere(&rec.normal));
 		// return 0.5 * ray_color(ray(rec.p, target - rec.p), world);
 		t_ray ray = init_ray(rec.p, vec_three_neg(target, rec.p));
 		return vec_three_mult(ray_color(&ray, world, depth -1), 0.5);

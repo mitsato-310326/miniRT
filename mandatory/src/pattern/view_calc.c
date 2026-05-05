@@ -54,6 +54,9 @@ int view_calc(char *data)
             ir = sqrt(scale * ir);
             ig = sqrt(scale * ig);
             ib = sqrt(scale * ib);
+            // ir *= scale;
+            // ig *= scale;
+            // ib *= scale;
 
             int r = (256 * clamp(ir, 0.0, 0.999));
             int g = (256 * clamp(ig, 0.0, 0.999));
