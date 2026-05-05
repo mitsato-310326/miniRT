@@ -21,15 +21,16 @@ int view_calc(char *data)
     t_camera cam = init_camera();
 
     t_hittable_list *world = NULL;
-    t_sphere a;
+    t_circle a;
     t_vec_three point3a = init_vec_three(0, 0, -1);
-    a.origin = point3a;
+    a.center = point3a;
     a.radius = 0.5;
-
-    t_sphere b;
+    a.type = SPHERE;
+    t_circle b;
     t_vec_three point3b = init_vec_three(0, -100.5, -1);
-    b.origin = point3b;
+    b.center = point3b;
     b.radius = 100.0;
+    b.type = SPHERE;
 
     ft_hlstadd_front(&world, ft_hlstnew(&a));
     ft_hlstadd_front(&world, ft_hlstnew(&b));
@@ -43,16 +44,16 @@ int view_calc(char *data)
                 double u = (i + random_double()) / (image_width-1);
                 double v = (j + random_double()) / (image_height-1);
                 t_ray r = get_ray(u, v, cam);
-                pixel_color = vec_three_add(pixel_color, ray_color(&r, &world));
+                pixel_color = vec_three_add(pixel_color, ray_color(&r, world, 50));
             }
-            double scale = 1.0 / samples_per_pixel;
             double ir = pixel_color.x;
             double ig = pixel_color.y;
             double ib = pixel_color.z;
 
-            ir *= scale;
-            ig *= scale;
-            ib *= scale;
+            double scale = 1.0 / samples_per_pixel;
+            ir = sqrt(scale * ir);
+            ig = sqrt(scale * ig);
+            ib = sqrt(scale * ib);
 
             int r = (256 * clamp(ir, 0.0, 0.999));
             int g = (256 * clamp(ig, 0.0, 0.999));

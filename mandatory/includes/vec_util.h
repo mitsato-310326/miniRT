@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 20:32:16 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/03 19:56:37 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/05 17:03:34 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ double		vec_three_squared(t_vec_three a);
 
 double		dot(t_vec_three a, t_vec_three b);
 t_vec_three unit_vector(t_vec_three v);
+t_vec_three random_in_unit_sphere();
 
 /*					DEBUG					*/
 

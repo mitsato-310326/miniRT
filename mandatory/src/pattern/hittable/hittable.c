@@ -6,64 +6,48 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 19:05:31 by mitsato           #+#    #+#             */
-/*   Updated: 2026/04/26 18:42:32 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/05 17:22:07 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void set_face_normal(t_ray * r, t_vec_three* outward_normal, t_hit_record *rec)
+void set_face_normal(t_ray *r, t_vec_three *outward_normal, t_hit_record *rec)
 {
-  	rec->front_face = dot(r->v_dir, *outward_normal) < 0;
-  	if (rec->front_face)
+	rec->front_face = dot(r->v_dir, *outward_normal) < 0;
+	if (rec->front_face)
 		rec->normal = *outward_normal;
 	else
-		rec->normal = vec_three_mult(*outward_normal, -1);
+		rec->normal = vec_three_mult(*outward_normal, -1.0);
 }
 
-bool hit(t_ray* r, double t_min, double t_max, t_hit_record *rec , t_vec_three center, double radius)
+bool hit_sphere(double t_min, double t_max, t_vec_three *center, double radius, t_ray *r, t_hit_record *rec)
 {
-	t_vec_three oc = vec_three_neg(r->p_origin, center);
+	t_vec_three oc = vec_three_neg(r->p_origin, *center);
 	double a = dot(r->v_dir, r->v_dir);
 	double half_b = dot(oc, r->v_dir);
 	double c = dot(oc, oc) - radius*radius;
 	double discriminant = half_b*half_b - a*c;
 
-  if (discriminant > 0) {
-    double root = sqrt(discriminant);
-    double temp = (-half_b - root)/a;
-    if (temp < t_max && temp > t_min) {
-      rec->t = temp;
-      rec->p = ray_at(*r, rec->t);
-      t_vec_three outward_normal = vec_three_mult(vec_three_neg(rec->p, center), 1 / radius);
-      set_face_normal(r, &outward_normal, rec);
-      return true;
-    }
-    temp = (-half_b + root) / a;
-    if (temp < t_max && temp > t_min) {
-      rec->t = temp;
-      rec->p = ray_at(*r, rec->t);
-      t_vec_three outward_normal = vec_three_mult(vec_three_neg(rec->p, center), 1 / radius);
-      set_face_normal(r, &outward_normal, rec);
-      return true;
-    }
-  }
-  return false;
+	if (discriminant > 0)
+	{
+		double root = sqrt(discriminant);
+		double temp = (-half_b - root) / a;
+		if (temp < t_max && temp > t_min) {
+			rec->t = temp;
+			rec->p = ray_at(*r, rec->t);
+			t_vec_three outward_normal = vec_three_mult(vec_three_neg(rec->p, *center), 1 / radius);
+			set_face_normal(r, &outward_normal, rec);
+			return true;
+		}
+		temp = (-half_b + root) / a;
+		if (temp < t_max && temp > t_min) {
+			rec->t = temp;
+			rec->p = ray_at(*r, rec->t);
+			t_vec_three outward_normal = vec_three_mult(vec_three_neg(rec->p, *center), 1 / radius);
+			set_face_normal(r, &outward_normal, rec);
+			return true;
+		}
+	}
+	return false;
 }
-
-// bool hit_all(t_ray *r, double t_min, double t_max, t_hit_record *rec)
-// {
-//   t_hit_record temp_rec;
-//   bool hit_anything = false;
-//   double closest_so_far = t_max;
-
-//   for (const auto& object : objects) {
-//     if (object->hit(*r, t_min, closest_so_far, temp_rec)) {
-//       hit_anything = true;
-//       closest_so_far = temp_rec.t;
-//       rec = temp_rec;
-//     }
-//   }
-
-//   return hit_anything;
-// }

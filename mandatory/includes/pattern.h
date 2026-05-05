@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 19:18:54 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/05 12:54:39 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/05 13:02:12 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct s_hittable_list t_hittable_list;
 /*					UTILS					*/
 
 int view_calc(char *data);
-t_vec_three ray_color(t_ray* r, t_hittable_list **world);
+t_vec_three ray_color(t_ray* r, t_hittable_list *world, int depth);
 
 /*					DEBUG					*/
 

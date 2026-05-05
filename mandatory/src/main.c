@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 20:26:10 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/05 12:54:39 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/05 16:06:33 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int	main(void)
 {
 	t_mlxs	*mlxs;
 
-	// PERROR
 	mlxs = init();
 	mlx_hook(mlxs->win, 17, 0, stop_minirt, mlxs);
 	mlx_key_hook(mlxs->win, key_handler, mlxs);

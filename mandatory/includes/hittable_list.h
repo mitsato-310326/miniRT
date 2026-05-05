@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 21:01:23 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/03 18:13:02 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/05 16:07:08 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,19 @@ typedef struct s_hittable_list
 	void	          *content;
 }			t_hittable_list;
 
+typedef enum e_hittable_type
+{
+	SPHERE,
+	PLANE,
+	// ...
+}	t_hittable_type;
+
+typedef struct s_circle
+{
+	t_vec_three center;
+	t_hittable_type type;
+	double radius;
+}			t_circle;
   // add関数
   // clear関数
 
