@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 20:26:10 by mitsato           #+#    #+#             */
-/*   Updated: 2026/04/16 21:13:26 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/05 12:54:39 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,22 +56,7 @@ int	main(void)
 	mlx_hook(mlxs->win, 17, 0, stop_minirt, mlxs);
 	mlx_key_hook(mlxs->win, key_handler, mlxs);
 
-	// set_colorset(mlxs->data);
-	sky(mlxs->data);
-	// put_circle();
-
-	// int color = 0xFF0F00;
-	// for (int i = 0; i <= 40; ++i)
-	// {
-	// 	for (int i2 = 0; i2 <= 40; ++i2)
-	// 	{
-	// 		int offset = (i2 * WIDTH + i) * 4;
-	// 		mlxs->data[offset + 0] = color & 0xFF;
-	// 		mlxs->data[offset + 1] = (color >> 8) & 0xFF;
-	// 		mlxs->data[offset + 2] = (color >> 16) & 0xFF;
-	// 		mlxs->data[offset + 3] = 0;
-	// 	}
-	// }
+	view_calc(mlxs->data);
 
 	print(mlxs);
 	mlx_loop(mlxs->mlx);

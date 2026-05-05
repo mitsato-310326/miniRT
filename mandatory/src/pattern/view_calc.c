@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sky.c                                              :+:      :+:    :+:   */
+/*   view_calc.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,13 +12,12 @@
 
 #include "minirt.h"
 
-int sky(char *data)
+int view_calc(char *data)
 {
     double aspect_ratio = 16.0 / 9.0;
     int image_width = WIDTH;
     int image_height = (int)(image_width / aspect_ratio);
     int samples_per_pixel = 100;
-    printf("P3\n%d %d\n255\n", image_width, image_height);
     t_camera cam = init_camera();
 
     t_hittable_list *world = NULL;
