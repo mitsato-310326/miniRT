@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hittable.h                                         :+:      :+:    :+:   */
+/*   lambertian.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/18 18:58:40 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/10 19:33:44 by mitsato          ###   ########.fr       */
+/*   Created: 2026/05/10 21:01:06 by mitsato           #+#    #+#             */
+/*   Updated: 2026/05/10 21:11:06 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HITTABLE_H
-#define HITTABLE_H
+#include "minirt.h"
+#include "lambertian.h"
 
-# include "minirt.h"
-# include "material.h"
-# include "sphere.h"
-
-typedef struct s_hit_record {
-  t_vec_three p;
-  t_vec_three normal;
-  t_material *material;
-  double t;
-  bool front_face;
-}				t_hit_record;
-
-// bool hit_sphere(double t_min, double t_max, t_vec_three *center, double radius, t_ray *r, t_hit_record *rec);
-
-#endif
+bool scatter(t_ray *r_in, t_hit_record *rec, t_vec_three *attenuation, t_ray *scattered, t_lambertian *lambertian)
+{
+	(void)r_in;
+	
+    t_vec_three scatter_direction = vec_three_add(rec->normal, random_in_unit_sphere());
+    *scattered = init_ray(rec->p, scatter_direction);
+    *attenuation = lambertian->albedo;
+    return true;
+}

@@ -21,14 +21,14 @@ int view_calc(char *data)
     t_camera cam = init_camera();
 
     t_hittable_list *world = NULL;
-    t_circle a;
+    t_sphere a;
     t_vec_three point3a = init_vec_three(0, 0, -1);
-    a.center = point3a;
+    a.origin = point3a;
     a.radius = 0.5;
     a.type = SPHERE;
-    t_circle b;
+    t_sphere b;
     t_vec_three point3b = init_vec_three(0, -100.5, -1);
-    b.center = point3b;
+    b.origin = point3b;
     b.radius = 100.0;
     b.type = SPHERE;
 

@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 21:12:56 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/05 17:57:39 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/10 20:38:23 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@
 
 bool hit_operator(t_ray* r, double t_min, double t_max, t_hit_record *rec , void *hittable)
 {
-	if (((t_circle *)hittable)->type == SPHERE)// circleじゃなくていい
+	if (((t_sphere *)hittable)->type == SPHERE)// circleじゃなくていい
 	{
-
-		return hit_sphere(t_min, t_max, &((t_circle *)hittable)->center, ((t_circle *)hittable)->radius, r, rec);
+		return hit_sphere(t_min, t_max, ((t_sphere *)hittable), r, rec);
 	}
 	return false;
 }
@@ -34,7 +33,7 @@ bool list_hit(t_ray* r, double t_min, double t_max, t_hit_record* rec, t_hittabl
 
 	while (tmp)
 	{
-		if (hit_operator(r, t_min, closest_so_far, &temp_rec, tmp->content)) // <-こいつの調整が必須（オブヘクトの種類によって変更）
+		if (hit_operator(r, t_min, closest_so_far, &temp_rec, tmp->content))
 		{
 			hit_anything = true;
 			closest_so_far = temp_rec.t;
