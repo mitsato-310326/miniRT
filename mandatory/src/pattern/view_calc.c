@@ -21,19 +21,51 @@ int view_calc(char *data)
     t_camera cam = init_camera();
 
     t_hittable_list *world = NULL;
+
     t_sphere a;
     t_vec_three point3a = init_vec_three(0, 0, -1);
     a.origin = point3a;
     a.radius = 0.5;
     a.type = SPHERE;
+    t_material a_m;
+    a_m.albedo = init_vec_three(0.7, 0.3, 0.3);
+    a_m.type = LAMBERTIAN;
+    a.material = &a_m;
+
     t_sphere b;
     t_vec_three point3b = init_vec_three(0, -100.5, -1);
     b.origin = point3b;
     b.radius = 100.0;
     b.type = SPHERE;
+    t_material b_m;
+    b_m.albedo = init_vec_three(0.8, 0.8, 0.0);
+    b_m.type = LAMBERTIAN;
+    b.material = &b_m;
+
+    t_sphere c;
+    t_vec_three point3c = init_vec_three(1.0 ,0 ,-1.0);
+    c.origin = point3c;
+    c.radius = 0.5;
+    c.type = SPHERE;
+    t_material c_m;
+    c_m.albedo = init_vec_three(0.8, 0.6, 0.2);
+    c_m.type = METAL;
+    c.material = &c_m;
+
+    t_sphere d;
+    t_vec_three point3d = init_vec_three(-1,0,-1);
+    d.origin = point3d;
+    d.radius = 0.5;
+    d.type = SPHERE;
+    t_material d_m;
+    d_m.albedo = init_vec_three(0.8, 0.8, 0.8);
+    d_m.type = METAL;
+    d.material = &d_m;
 
     ft_hlstadd_front(&world, ft_hlstnew(&a));
     ft_hlstadd_front(&world, ft_hlstnew(&b));
+    ft_hlstadd_front(&world, ft_hlstnew(&c));
+    ft_hlstadd_front(&world, ft_hlstnew(&d));
 
     for (int j = image_height-1; j >= 0; --j)
     {

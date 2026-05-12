@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 14:09:24 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/03 19:58:26 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/12 19:39:49 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,16 @@ t_vec_three vec_three_mult(t_vec_three a, double t)
 	ret.x = a.x * t;
 	ret.y = a.y * t;
 	ret.z = a.z * t;
+	return (ret);
+}
+
+t_vec_three vec_three_mult_v(t_vec_three a, t_vec_three b)
+{
+	t_vec_three ret;
+
+	ret.x = a.x * b.x;
+	ret.y = a.y * b.y;
+	ret.z = a.z * b.z;
 	return (ret);
 }
 

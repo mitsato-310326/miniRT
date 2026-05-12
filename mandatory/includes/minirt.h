@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 20:32:16 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/05 17:57:01 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/12 19:55:03 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 #include "./sphere.h"
 #include "./camera.h"
 #include "./ft_weekend.h"
+#include "./lambertian.h"
 
 #define WIDTH 320 * 2
 #define HEIGHT 180 * 2
