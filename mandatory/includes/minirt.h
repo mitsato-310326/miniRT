@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 20:32:16 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/24 15:36:16 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/24 16:21:13 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef struct s_mlxs
 	char *win;
 	char *img;
 	char *data;
+
+	t_camera *cam;
 }						t_mlxs;
 
 t_mlxs *init();
@@ -59,10 +61,12 @@ int destroy_minirt(t_mlxs *mlxs);
 /*					DEBUG					*/
 
 #define BLUE   "\033[34m"
+#define GREEN   "\033[32m"
 #define RED   "\033[31m"
 #define RESET "\033[0m"
 
 #define PERROR printf(RED "ERROR" RESET "\n");
+#define PSUCCESS printf(GREEN "SUCCESS" RESET "\n");
 #define ENTRY(str) do { \
     static int i = 0; \
     if (i++ == 0) { \

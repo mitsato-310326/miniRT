@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 20:26:10 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/24 15:42:29 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/24 16:22:29 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ int	key_handler(int keycode, void *v_mlxs)
 		ft_mlx_loop_end(((t_mlxs *)v_mlxs)->mlx);
 	else
 	{
-		;
+		(((t_mlxs *)v_mlxs))->cam->origin.z += 0.2;
+		view_calc(((t_mlxs *)v_mlxs));
+		print(((t_mlxs *)v_mlxs));
+		PSUCCESS
 	}
 	return (0);
 }

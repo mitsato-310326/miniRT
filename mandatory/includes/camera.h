@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 20:32:16 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/03 19:54:46 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/24 16:14:59 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_camera
     t_vec_three vertical;
 }			t_camera;
 
-t_camera init_camera();
+t_camera *init_camera();
 t_ray get_ray(double u, double v, t_camera camera);
 
 #endif
