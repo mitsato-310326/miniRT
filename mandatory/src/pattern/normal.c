@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 21:01:23 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/12 20:18:21 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/24 12:20:15 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 t_vec_three ray_color(t_ray* r, t_hittable_list *world, int depth)
 {
-	ENTRY
+	ENTRY("ray_color");
 	if (depth <= 0)
 		return init_vec_three(0,0,0);
 	t_hit_record rec;

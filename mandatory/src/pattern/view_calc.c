@@ -14,6 +14,7 @@
 
 int view_calc(char *data)
 {
+    ENTRY("view_calc");
     double aspect_ratio = 16.0 / 9.0;
     int image_width = WIDTH;
     int image_height = (int)(image_width / aspect_ratio);

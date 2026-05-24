@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 20:26:10 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/05 16:06:33 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/24 12:32:22 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,6 @@ int destroy_minirt(t_mlxs *mlxs)
 		free(mlxs);
 	}
 	return(0);
-}
-
-void set_colorset(char *data)
-{
-	int image_width = 320;
-	int image_height = 180;
-
-	for (int j = image_height-1; j >= 0; --j) {
-		for (int i = 0; i < image_width; ++i) {
-		double r = (double)(i) / (image_width-1);
-		double g = (double)(j) / (image_height-1);
-		double b = 0.25;
-
-		int ir = (int)(255.999 * r);
-		int ig = (int)(255.999 * g);
-		int ib = (int)(255.999 * b);
-
-		my_pixel_put(data, i, j, (ir * 256 * 256) + (ig * 256) + ib);
-		}
-	}
 }
 
 int	main(void)

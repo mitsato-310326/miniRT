@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 20:26:10 by mitsato           #+#    #+#             */
-/*   Updated: 2026/04/11 15:07:14 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/24 12:31:46 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,12 @@
 
 int stop_minirt(void *v_mlxs)
 {
-	(void)v_mlxs;
 	ft_mlx_loop_end(((t_mlxs *)v_mlxs)->mlx);
 	return (0);
 }
 
 int	key_handler(int keycode, void *v_mlxs)
 {
-	(void)v_mlxs;
-	(void)keycode;
-
 	if (keycode == 0xFF1B)
 		ft_mlx_loop_end(((t_mlxs *)v_mlxs)->mlx);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 21:01:23 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/12 20:13:29 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/24 12:32:57 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef enum e_hittable_type
 }	t_hittable_type;
 
 
-// bool list_hit(t_ray* r, double tmin, double tmax, t_hittable_list* rec);
 bool list_hit(t_ray* r, double t_min, double t_max, t_hit_record* rec, t_hittable_list* top);
 t_hittable_list	*ft_hlstnew(void *content);
 void ft_hlstadd_front(t_hittable_list **lst, t_hittable_list *new);
