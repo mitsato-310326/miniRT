@@ -95,6 +95,5 @@ int view_calc(char *data)
 		    my_pixel_put(data, i, j, (r * 256 * 256) + (g * 256) + b);
         }
     }
-    perror("\nDone.\n");
     return 1;
 }

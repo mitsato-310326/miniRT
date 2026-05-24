@@ -6,14 +6,14 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/03 19:42:08 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/24 12:28:46 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/24 14:09:40 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include "camera.h"
 
-t_camera init_camera()
+t_camera init_camera()//カメラオブジェクトは別物だしここでべついいかも
 {
     ENTRY("init_camera");
 

@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 20:26:10 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/24 12:32:22 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/24 14:04:23 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ int	main(void)
 	print(mlxs);
 	mlx_loop(mlxs->mlx);
 	destroy_minirt(mlxs);
+	PERROR
 	return (0);
 }

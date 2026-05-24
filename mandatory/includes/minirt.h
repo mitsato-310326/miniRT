@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 20:32:16 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/24 12:19:55 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/24 15:36:16 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int destroy_minirt(t_mlxs *mlxs);
 
 /*					DEBUG					*/
 
+#define BLUE   "\033[34m"
 #define RED   "\033[31m"
 #define RESET "\033[0m"
 
@@ -65,7 +66,7 @@ int destroy_minirt(t_mlxs *mlxs);
 #define ENTRY(str) do { \
     static int i = 0; \
     if (i++ == 0) { \
-        printf(RED "GET IN %s FUNCTION" RESET "\n", (str)); \
+        printf(BLUE "GET IN %s FUNCTION" RESET "\n", (str)); \
     } \
 } while(0)
 

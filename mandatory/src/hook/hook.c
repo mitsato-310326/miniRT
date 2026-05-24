@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 20:26:10 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/24 12:31:46 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/24 15:42:29 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,9 @@ int	key_handler(int keycode, void *v_mlxs)
 {
 	if (keycode == 0xFF1B)
 		ft_mlx_loop_end(((t_mlxs *)v_mlxs)->mlx);
+	else
+	{
+		;
+	}
 	return (0);
 }
