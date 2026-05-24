@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 19:05:31 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/24 12:34:42 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/24 17:02:34 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ void set_face_normal(t_ray *r, t_vec_three *outward_normal, t_hit_record *rec)
 		rec->normal = vec_three_mult(*outward_normal, -1.0);
 }
 
-bool hit_sphere(double t_min, double t_max, t_sphere *sphere, t_ray *r, t_hit_record *rec)
+bool hit_sphere(double t_min, double t_max, void *sphere, t_ray *r, t_hit_record *rec)
 {
 	ENTRY("hit_sphere");
-	double radius = sphere->radius;
-	t_vec_three *center = &sphere->origin;
+	double radius = ((t_sphere *)((t_hittable *)sphere)->object_unique_info)->radius;
+	t_vec_three *center = &((t_sphere *)((t_hittable *)sphere)->object_unique_info)->origin;
 	t_vec_three oc = vec_three_neg(r->p_origin, *center);
 	double a = dot(r->v_dir, r->v_dir);
 	double half_b = dot(oc, r->v_dir);
@@ -42,7 +42,7 @@ bool hit_sphere(double t_min, double t_max, t_sphere *sphere, t_ray *r, t_hit_re
 			rec->p = ray_at(*r, rec->t);
 			t_vec_three outward_normal = vec_three_mult(vec_three_neg(rec->p, *center), 1 / radius);
 			set_face_normal(r, &outward_normal, rec);
-			rec->material = sphere->material;
+			rec->material = ((t_hittable *)sphere)->material;
 			return true;
 		}
 		temp = (-half_b + root) / a;
@@ -51,7 +51,7 @@ bool hit_sphere(double t_min, double t_max, t_sphere *sphere, t_ray *r, t_hit_re
 			rec->p = ray_at(*r, rec->t);
 			t_vec_three outward_normal = vec_three_mult(vec_three_neg(rec->p, *center), 1 / radius);
 			set_face_normal(r, &outward_normal, rec);
-			rec->material = sphere->material;
+			rec->material = ((t_hittable *)sphere)->material;
 			return true;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 20:26:10 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/24 16:15:19 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/24 16:29:16 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	main(void)
 	t_mlxs	*mlxs;
 
 	mlxs = init();
-	mlxs->cam = init_camera();
+	mlxs->cam = init_camera();//これinitに入れるべき
+
 	mlx_hook(mlxs->win, 17, 0, stop_minirt, mlxs);
 	mlx_key_hook(mlxs->win, key_handler, mlxs);
 
@@ -41,6 +42,6 @@ int	main(void)
 	print(mlxs);
 	mlx_loop(mlxs->mlx);
 	destroy_minirt(mlxs);
-	PERROR
+	PSUCCESS
 	return (0);
 }

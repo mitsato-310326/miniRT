@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 18:06:13 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/12 20:16:52 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/24 16:43:19 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,13 @@
 #include "hittable_list.h"
 #include "minirt.h"
 
-typedef enum e_material_type
-{
-	LAMBERTIAN,
-	METAL,
-	// ...
-}	t_material_type;
-
 typedef struct s_material
 {
 	t_ray *r_in;
 	t_ray *scattered;
 	t_vec_three attenuation;
 	t_vec_three albedo;
-	t_material_type type;
+	bool (* scatter_fn)(t_ray *r_in, t_hit_record *rec, t_vec_three *attenuation, t_ray *scattered, void *material);
 }			t_material;
 
 #endif
