@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 20:32:16 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/24 16:21:13 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/28 22:23:42 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@
 #include "./ft_weekend.h"
 #include "./lambertian.h"
 
-#define WIDTH 320 * 2
-#define HEIGHT 180 * 2
+#define WIDTH 640
+#define HEIGHT 360
 
 /*											*/
 
@@ -49,10 +49,12 @@ typedef struct s_mlxs
 	char *img;
 	char *data;
 
+	t_hittable_list *hittable_list;
 	t_camera *cam;
 }						t_mlxs;
 
-t_mlxs *init();
+void put_error(char *errstr, bool systemerr);
+t_mlxs *init(char *map);
 int destroy_minirt(t_mlxs *mlxs);
 
 /*											*/

@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 20:32:16 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/12 19:40:06 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/28 21:45:20 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,6 @@ typedef struct s_vec_three
 	double	y;
 	double	z;
 }			t_vec_three;
-
-// typedef struct s_point3
-// {
-// 	double	x;
-// 	double	y;
-// 	double	z;
-// }			t_point3;
-
-// typedef struct s_color
-// {
-// 	double	x;
-// 	double	y;
-// 	double	z;
-// }			t_color;
 
 /*					UTILS					*/
 
