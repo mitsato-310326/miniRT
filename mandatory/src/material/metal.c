@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 19:18:37 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/24 16:48:37 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/29 18:39:53 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ bool scatter_metal(t_ray *r_in, t_hit_record *rec, t_vec_three *attenuation, t_r
 {
 	t_vec_three tmp = unit_vector(r_in->v_dir);
 	t_vec_three reflected = reflect(&tmp, &rec->normal);
-	*scattered = init_ray(rec->p, reflected);
+	*scattered = (struct s_ray){rec->p, reflected};
 	*attenuation = ((t_material *)material)->albedo;
 	return (dot(scattered->v_dir, rec->normal) > 0);
 }
@@ -36,7 +36,7 @@ bool scatter(t_ray *r_in, t_hit_record *rec, t_vec_three *attenuation, t_ray *sc
 	(void)r_in;
 
     t_vec_three scatter_direction = vec_three_add(rec->normal, random_in_unit_sphere());
-    *scattered = init_ray(rec->p, scatter_direction);
+    *scattered = (struct s_ray){rec->p, scatter_direction};
     *attenuation = ((t_material *)material)->albedo;
     return true;
 }

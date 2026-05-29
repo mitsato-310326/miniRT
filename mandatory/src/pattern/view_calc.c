@@ -14,9 +14,9 @@
 
 int view_calc(t_mlxs *mlxs)
 {
+    ENTRY("view_calc");
     char *data = mlxs->data;
     t_camera *cam = mlxs->cam;
-    ENTRY("view_calc");
     double aspect_ratio = (double)WIDTH / HEIGHT;
     int image_width = WIDTH;
     int image_height = (int)(image_width / aspect_ratio);
@@ -29,26 +29,13 @@ int view_calc(t_mlxs *mlxs)
     {
         for (int i = 0; i < image_width; ++i)
         {
-            t_vec_three pixel_color = init_vec_three(0, 0, 0);
+            t_vec_three pixel_color = (struct s_vec_three){0, 0, 0};
             for (int s = 0; s < samples_per_pixel; ++s) {
                 double u = (i + random_double()) / (image_width-1);
                 double v = (j + random_double()) / (image_height-1);
                 t_ray r = get_ray(u, v, *cam);
-                pixel_color = vec_three_add(pixel_color, ray_color(&r, world, 3));
+                pixel_color = vec_three_add(pixel_color, ray_color(&r, world, 50));
             }
-            // double ir = pixel_color.x;
-            // double ig = pixel_color.y;
-            // double ib = pixel_color.z;
-
-            // ir = sqrt(scale * ir);
-            // ig = sqrt(scale * ig);
-            // ib = sqrt(scale * ib);
-
-            // int r = (256 * clamp(ir, 0.0, 0.999));
-            // int g = (256 * clamp(ig, 0.0, 0.999));
-            // int b = (256 * clamp(ib, 0.0, 0.999));
-
-		    // // my_pixel_put(data, i, j, (r * 256 * 256) + (g * 256) + b);
             my_pixel_put(data, i, j, scale, &pixel_color);
         }
     }

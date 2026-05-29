@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 20:32:16 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/28 21:45:20 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/29 18:37:06 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ typedef struct s_vec_three
 }			t_vec_three;
 
 /*					UTILS					*/
-
-t_vec_three init_vec_three(double x, double y, double z);
 
 t_vec_three	vec_three_add(t_vec_three a, t_vec_three b);
 t_vec_three	vec_three_neg(t_vec_three a, t_vec_three b);

@@ -6,21 +6,12 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 14:52:22 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/03 20:32:53 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/29 18:40:32 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vec_util.h"
 #include "ray_util.h"
-
-t_ray	init_ray(t_vec_three origin, t_vec_three direction)//値渡し
-{
-	t_ray new;
-
-	new.p_origin = origin;
-	new.v_dir = direction;
-	return new;
-}
 
 t_vec_three ray_at(t_ray ray, double t)
 {

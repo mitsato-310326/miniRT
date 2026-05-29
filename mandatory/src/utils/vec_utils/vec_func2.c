@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 14:09:24 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/12 19:15:39 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/29 18:36:29 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_vec_three random_in_unit_sphere()
   double a = random_double_with(0, 2*PI);
   double z = random_double_with(-1, 1);
   double r = sqrt(1 - z*z);
-  return init_vec_three(r*cos(a), r*sin(a), z);
+  return (struct s_vec_three){r * cos(a), r * sin(a), z};
 }
 
 t_vec_three random_in_hemisphere(t_vec_three *normal)

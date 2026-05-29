@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 21:30:48 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/28 22:21:01 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/29 21:47:17 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	my_pixel_put(char *data, int x, int y, double scale, t_vec_three *color)
 {
-	// int i_color;
 	double ir = color->x;
 	double ig = color->y;
 	double ib = color->z;
@@ -26,8 +25,6 @@ void	my_pixel_put(char *data, int x, int y, double scale, t_vec_three *color)
 	int r = (256 * clamp(ir, 0.0, 0.999));
 	int g = (256 * clamp(ig, 0.0, 0.999));
 	int b = (256 * clamp(ib, 0.0, 0.999));
-
-	// i_color = (r * 256 * 256) + (g * 256) + b;
 
 	int	offset;
 

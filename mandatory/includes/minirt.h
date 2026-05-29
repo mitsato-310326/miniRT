@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 20:32:16 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/28 22:23:42 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/29 22:01:47 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 #include "../../mlx/mlx.h"
 #include "../../libft/libft.h"
 #include "./hook.h"
-#include "./printer.h"
 #include "./ray_util.h"
 #include "./vec_util.h"
 #include "./math_util.h"
@@ -29,7 +28,6 @@
 //debug includes
 #include "../../ft_mlx.h"
 #include "../../os_setting.h"
-#include "./pattern.h"
 #include "./hittable.h"
 #include "./hittable_list.h"
 #include "./sphere.h"
@@ -57,8 +55,20 @@ void put_error(char *errstr, bool systemerr);
 t_mlxs *init(char *map);
 int destroy_minirt(t_mlxs *mlxs);
 
-/*											*/
+/*					CALCULATE				*/
 
+int view_calc(t_mlxs *mlx);
+t_vec_three ray_color(t_ray* r, t_hittable_list *world, int depth);
+
+/*					HOOK					*/
+
+int stop_minirt(void *v_mlxs);
+int	key_handler(int keycode, void *v_mlxs);
+
+/*					PRINT					*/
+
+bool 	print(t_mlxs * mlxs);
+void	my_pixel_put(char *data, int x, int y, double scale, t_vec_three *color);
 
 /*					DEBUG					*/
 

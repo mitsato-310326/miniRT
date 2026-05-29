@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 19:01:23 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/24 16:53:39 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/29 22:01:18 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,6 @@
 
 #include "hittable.h"
 #include "minirt.h"
-
-// typedef struct t_vtable
-// {
-// 	void (*hit)(unsigned int, char);
-// }				s_vtable;
-
-typedef struct s_hittable
-{
-	t_material * material;
-	bool (*hit_fn)(double t_min, double t_max, void *hittable, t_ray *r, t_hit_record *rec);
-	void *object_unique_info;
-}			t_hittable;
 
 typedef struct s_sphere
 {
