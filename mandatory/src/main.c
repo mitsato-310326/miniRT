@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 20:26:10 by mitsato           #+#    #+#             */
-/*   Updated: 2026/04/16 21:13:26 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/05/28 22:17:41 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,54 +27,37 @@ int destroy_minirt(t_mlxs *mlxs)
 	return(0);
 }
 
-void set_colorset(char *data)
-{
-	int image_width = 320;
-	int image_height = 180;
 
-	for (int j = image_height-1; j >= 0; --j) {
-		for (int i = 0; i < image_width; ++i) {
-		double r = (double)(i) / (image_width-1);
-		double g = (double)(j) / (image_height-1);
-		double b = 0.25;
-
-		int ir = (int)(255.999 * r);
-		int ig = (int)(255.999 * g);
-		int ib = (int)(255.999 * b);
-
-		my_pixel_put(data, i, j, (ir * 256 * 256) + (ig * 256) + ib);
-		}
-	}
-}
-
-int	main(void)
+int	main(int ac, char **av)
 {
 	t_mlxs	*mlxs;
 
-	// PERROR
-	mlxs = init();
-	mlx_hook(mlxs->win, 17, 0, stop_minirt, mlxs);
-	mlx_key_hook(mlxs->win, key_handler, mlxs);
+	{
+		(void)ac;
+	}
 
-	// set_colorset(mlxs->data);
-	sky(mlxs->data);
-	// put_circle();
-
-	// int color = 0xFF0F00;
-	// for (int i = 0; i <= 40; ++i)
+	// if (ac != 2)
 	// {
-	// 	for (int i2 = 0; i2 <= 40; ++i2)
-	// 	{
-	// 		int offset = (i2 * WIDTH + i) * 4;
-	// 		mlxs->data[offset + 0] = color & 0xFF;
-	// 		mlxs->data[offset + 1] = (color >> 8) & 0xFF;
-	// 		mlxs->data[offset + 2] = (color >> 16) & 0xFF;
-	// 		mlxs->data[offset + 3] = 0;
-	// 	}
+	// 	put_error("Invalid args", 0);
+	// 	return(1);
 	// }
 
+	/*
+
+	t_mlxsに描画に必要なすべての情報を入れないとhookで描画をやり直す処理が実現できない。
+	やるなら、オブジェクトの情報もココでやらないと、というかhittable_listとかへの格納、検証は
+	mlxの初期化前のほうがいいのか。
+
+	それも含めてinit関数の先頭でやろう。
+
+	*/
+
+	mlxs = init(*av);
+	view_calc(mlxs);
 	print(mlxs);
+
 	mlx_loop(mlxs->mlx);
 	destroy_minirt(mlxs);
+	PSUCCESS
 	return (0);
 }

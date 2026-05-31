@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printer.h                                          :+:      :+:    :+:   */
+/*   ft_weekend.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 21:51:59 by mitsato           #+#    #+#             */
-/*   Updated: 2026/04/12 12:11:31 by mitsato          ###   ########.fr       */
+/*   Created: 2026/05/03 19:14:14 by mitsato           #+#    #+#             */
+/*   Updated: 2026/05/03 20:03:41 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTER_H
-# define PRINTER_H
+#ifndef FT_WEEKEND_H
+# define FT_WEEKEND_H
 
-typedef struct s_mlxs	t_mlxs;
+#include <math.h>
+#include <stdlib.h>
 
-/*											*/
-
-bool print(t_mlxs * mlxs);
-
-void	my_pixel_put(char *data, int x, int y, int color);
-
-/*											*/
-
-
-/*					DEBUG					*/
-
-/*											*/
+double	random_double(void);
+double	random_double_with(double min, double max);
+double	clamp(double x, double min, double max);
 
 #endif

@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pattern.h                                          :+:      :+:    :+:   */
+/*   ft_weekend.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/16 19:18:54 by mitsato           #+#    #+#             */
-/*   Updated: 2026/04/16 21:12:43 by mitsato          ###   ########.fr       */
+/*   Created: 2026/05/03 19:14:09 by mitsato           #+#    #+#             */
+/*   Updated: 2026/05/05 16:56:47 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PATTERN_H
-# define PATTERN_H
+#include "ft_weekend.h"
 
-/*											*/
+double	random_double(void)
+{
+	return (rand() / (2147483647 + 1.0));
+}
 
-typedef struct s_vec_three t_vec_three;
-typedef struct s_hittable_list t_hittable_list;
+double	random_double_with(double min, double max)
+{
+	return (min + (max - min) * random_double());
+}
 
-/*					UTILS					*/
+double clamp(double x, double min, double max)
+{
+  if (x < min) return min;
+  if (x > max) return max;
+  return x;
+}
 
-int sky(char *data);
-t_vec_three ray_color(t_ray* r, t_hittable_list **world);
-
-/*					DEBUG					*/
-
-/*											*/
-
-#endif

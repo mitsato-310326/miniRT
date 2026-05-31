@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere.h                                           :+:      :+:    :+:   */
+/*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/18 19:01:23 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/29 22:01:18 by mitsato          ###   ########.fr       */
+/*   Created: 2026/05/03 19:42:08 by mitsato           #+#    #+#             */
+/*   Updated: 2026/05/29 18:37:47 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPHERE_H
-# define SPHERE_H
-
-#include "hittable.h"
 #include "minirt.h"
+#include "camera.h"
 
-typedef struct s_sphere
+
+t_ray get_ray(double u, double v, t_camera camera)
 {
-	t_vec_three origin;
-	double	radius;
-}			t_sphere;
-
-bool hit_sphere(double t_min, double t_max, void *hittable, t_ray *r, t_hit_record *rec);
-
-#endif
+    ENTRY("get_ray");
+	return (struct s_ray){camera.origin, vec_three_add(vec_three_add(camera.lower_left_corner, vec_three_mult(camera.horizontal, u)), vec_three_neg(vec_three_mult(camera.vertical, v), camera.origin))};
+}
