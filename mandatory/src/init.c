@@ -6,11 +6,14 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 21:18:49 by mitsato           #+#    #+#             */
-/*   Updated: 2026/06/02 20:04:26 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/06/02 20:48:37 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+int stop_minirt(void *v_mlxs);
+int	key_handler(int keycode, void *v_mlxs);
 
 void put_error(char *errstr, bool systemerr)
 {
@@ -37,8 +40,8 @@ bool setup_mlx(t_mlxs *mlxs)
 	mlxs->data = mlx_get_data_addr(mlxs->img, &(int){0}, &(int){0}, &(int){0}); //多分複合リテラル
 	if (mlxs->data == NULL)
 		return false;
-	mlx_hook(mlxs->win, 17, 0, stop_minirt, mlxs);
-	mlx_key_hook(mlxs->win, key_handler, mlxs);
+	mlx_hook(mlxs->win, 17, 0, (int(*)(void))stop_minirt, mlxs);
+	mlx_key_hook(mlxs->win, (int(*)(void))key_handler, mlxs);
 	return true;
 }
 
