@@ -20,7 +20,7 @@ int view_calc(t_mlxs *mlxs)
     double aspect_ratio = (double)WIDTH / HEIGHT;
     int image_width = WIDTH;
     int image_height = (int)(image_width / aspect_ratio);
-    int samples_per_pixel = 100;
+    int samples_per_pixel = 8;
     double scale = 1.0 / samples_per_pixel;
 
     t_hittable_list *world = mlxs->hittable_list;
@@ -34,7 +34,7 @@ int view_calc(t_mlxs *mlxs)
                 double u = (i + random_double()) / (image_width-1);
                 double v = (j + random_double()) / (image_height-1);
                 t_ray r = get_ray(u, v, *cam);
-                pixel_color = vec_three_add(pixel_color, ray_color(&r, world, 50));
+                pixel_color = vec_three_add(pixel_color, ray_color(&r, world, 15));
             }
             my_pixel_put(data, i, j, scale, &pixel_color);
         }

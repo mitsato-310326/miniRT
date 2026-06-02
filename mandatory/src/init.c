@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 21:18:49 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/29 22:17:27 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/06/02 20:04:26 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,9 +109,9 @@ t_hittable_list *create_obj()
 
     t_hittable *a_u = malloc(sizeof(t_hittable));
     t_sphere *a = malloc(sizeof(t_sphere));
-    t_vec_three point3a = (struct s_vec_three){0, 0, -1};
+    t_vec_three point3a = (struct s_vec_three){-0.2, -0.2, -1};
     a->origin = point3a;
-    a->radius = 0.5;
+    a->radius = 0.1; // ココ大きくしたら壊れた、わんちゃんカメラがオブジェクトにめり込んでいると動いてくれないかも
     a_u->hit_fn = &hit_sphere;
     t_material *a_m = malloc(sizeof(t_material));
     a_m->albedo = (struct s_vec_three){0.7, 0.3, 0.3};
@@ -121,37 +121,37 @@ t_hittable_list *create_obj()
 
     t_hittable *b_u = malloc(sizeof(t_hittable));
     t_sphere *b = malloc(sizeof(t_sphere));
-    t_vec_three point3b = (struct s_vec_three){0, -100.5, -1};
+    t_vec_three point3b = (struct s_vec_three){2.2, -40.5, -1};
     b->origin = point3b;
-    b->radius = 100.0;
+    b->radius = 40.0;
     b_u->hit_fn = &hit_sphere;
     t_material *b_m = malloc(sizeof(t_material));
-    b_m->albedo = (struct s_vec_three){0.8, 0.8, 0.0};
-    b_m->scatter_fn = &scatter;
+    b_m->albedo = (struct s_vec_three){0.8, 0.8, 1};
+    b_m->scatter_fn = &scatter_metal;
     b_u->material = b_m;
     b_u->object_unique_info = b;
 
     t_hittable *c_u = malloc(sizeof(t_hittable));
     t_sphere *c = malloc(sizeof(t_sphere));
-    t_vec_three point3c = (struct s_vec_three){1.0 ,0 ,-1.0};
+    t_vec_three point3c = (struct s_vec_three){1.0 ,0.5 ,-1.0};
     c->origin = point3c;
-    c->radius = 0.5;
+    c->radius = 1;
     c_u->hit_fn = &hit_sphere;
     t_material *c_m = malloc(sizeof(t_material));
-    c_m->albedo = (struct s_vec_three){0.8, 0.6, 0.2};
+    c_m->albedo = (struct s_vec_three){0.8, 0.6, 0};
     c_m->scatter_fn = &scatter_metal;
     c_u->material = c_m;
     c_u->object_unique_info = c;
 
     t_hittable *d_u = malloc(sizeof(t_hittable));
     t_sphere *d = malloc(sizeof(t_sphere));
-    t_vec_three point3d = (struct s_vec_three){-1,0,-1};
+    t_vec_three point3d = (struct s_vec_three){-1,0,-4};
     d->origin = point3d;
     d->radius = 0.5;
     d_u->hit_fn = &hit_sphere;
     t_material *d_m = malloc(sizeof(t_material));
     d_m->albedo = (struct s_vec_three){0.8, 0.8, 0.8};
-    d_m->scatter_fn = &scatter_metal;
+    d_m->scatter_fn = &scatter;
     d_u->material = d_m;
     d_u->object_unique_info = d;
 
