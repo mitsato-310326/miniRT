@@ -20,10 +20,8 @@
 #include <stdbool.h>
 #include "../../mlx/mlx.h"
 #include "../../libft/libft.h"
-#include "./hook.h"
 #include "./ray_util.h"
 #include "./vec_util.h"
-#include "./math_util.h"
 
 //debug includes
 #include "../../ft_mlx.h"

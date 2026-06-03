@@ -55,15 +55,15 @@ MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11 -lm
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT)
-	@if [ ! -d "mlx" ]; then \
-	git clone https://github.com/42Paris/minilibx-linux.git mlx; \
-	fi
 	@make -C $(MLX_LIB)
 	$(CC) $(CFLAGS) ${INCLUDE} $(OBJ) $(LIBFT_FLAGS) $(MLX_FLAGS) -o $(NAME)
 
-$(OBJ_DIR)/%.o: mandatory/src/%.c
+$(OBJ_DIR)/%.o: mandatory/src/%.c mlx/mlx.h
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) ${INCLUDE} -c $< -o $@
+
+mlx/mlx.h:
+	git clone https://github.com/42Paris/minilibx-linux.git mlx
 
 $(LIBFT):
 	@-$(MAKE) -C $(LIBFT_DIR)

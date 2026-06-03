@@ -40,8 +40,8 @@ bool setup_mlx(t_mlxs *mlxs)
 	mlxs->data = mlx_get_data_addr(mlxs->img, &(int){0}, &(int){0}, &(int){0}); //多分複合リテラル
 	if (mlxs->data == NULL)
 		return false;
-	mlx_hook(mlxs->win, 17, 0, (int(*)(void))stop_minirt, mlxs);
-	mlx_key_hook(mlxs->win, (int(*)(void))key_handler, mlxs);
+	mlx_hook(mlxs->win, 17, 0, stop_minirt, mlxs);
+	mlx_key_hook(mlxs->win, key_handler, mlxs);
 	return true;
 }
 
