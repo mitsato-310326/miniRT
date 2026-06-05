@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 21:12:56 by mitsato           #+#    #+#             */
-/*   Updated: 2026/05/24 17:08:26 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/06/05 19:26:54 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 
 bool hit_operator(t_ray* r, double t_min, double t_max, t_hit_record *rec , void *hittable)
 {
-	ENTRY("hit_operator");
+	// ENTRY("hit_operator");
 	return ((t_hittable *)hittable)->hit_fn(t_min, t_max, ((t_sphere *)hittable), r, rec);
 }
 
 bool list_hit(t_ray* r, double t_min, double t_max, t_hit_record* rec, t_hittable_list* top)
 {
-	ENTRY("list_hit");
+	// ENTRY("list_hit");
 	t_hit_record temp_rec;
 	bool hit_anything = false;
 	double closest_so_far = t_max;
@@ -55,7 +55,7 @@ t_hittable_list	*ft_hlstnew(void *content)
 
 void ft_hlstadd_front(t_hittable_list **lst, t_hittable_list *new)
 {
-	ENTRY("ft_hlstadd_front");
+	// ENTRY("ft_hlstadd_front");
 	new->next = *lst;
 	*lst = new;
 }

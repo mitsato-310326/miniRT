@@ -6,7 +6,7 @@
 /*   By: mitsato <mitsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 21:18:49 by mitsato           #+#    #+#             */
-/*   Updated: 2026/06/02 20:48:37 by mitsato          ###   ########.fr       */
+/*   Updated: 2026/06/05 19:27:04 by mitsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ bool setup_mlx(t_mlxs *mlxs)
 
 t_camera *init_camera() //カメラオブジェクトは別物だしここでべついいかも
 {
-    ENTRY("init_camera");
+    // ENTRY("init_camera");
 
 	t_camera *new = malloc(sizeof(t_camera));
     if (!new)
@@ -117,7 +117,7 @@ t_hittable_list *create_obj()
     a->radius = 0.1; // ココ大きくしたら壊れた、わんちゃんカメラがオブジェクトにめり込んでいると動いてくれないかも
     a_u->hit_fn = &hit_sphere;
     t_material *a_m = malloc(sizeof(t_material));
-    a_m->albedo = (struct s_vec_three){0.7, 0.3, 0.3};
+    a_m->albedo = (struct s_vec_three){0.7, 0.1, 0.3};
     a_m->scatter_fn = &scatter;
     a_u->material = a_m;
     a_u->object_unique_info = a;
